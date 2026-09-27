@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Ravi Yadav, Computer Engineering student, cybersecurity learner, and security researcher.">
+  <title>Ravi Yadav — Cybersecurity Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#070a0d;--panel:#0d141a;--panel2:#111a21;--line:#22313b;--text:#ecf4f6;--muted:#9aabb4;--cyan:#46d9ee;--cyan-soft:rgba(70,217,238,.08);--orange:#ff7a18;--orange-soft:rgba(255,122,24,.09);--green:#83c99a;--danger:#ff8b8b}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;width:100%;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(70,217,238,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,122,24,.035) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(to bottom,#000,transparent 92%);animation:gridDrift 24s linear infinite}
+    .signal-layer{position:fixed;inset:0;pointer-events:none;z-index:-2;overflow:hidden;opacity:.45}.signal-layer:before{content:"";position:absolute;inset:-20%;background:repeating-linear-gradient(to bottom,transparent 0,transparent 70px,rgba(70,217,238,.025) 71px,transparent 73px);animation:scanDrift 16s linear infinite}
+    .signal-line{position:absolute;height:1px;transform-origin:left center;background:linear-gradient(90deg,transparent,rgba(70,217,238,.3),rgba(255,122,24,.22),transparent)}.signal-line.one{width:30%;left:7%;top:23%;transform:rotate(18deg)}.signal-line.two{width:23%;right:5%;top:54%;transform:rotate(-24deg)}
+    a{color:inherit;text-decoration:none}.mono{font-family:"Space Mono",monospace}.shell{width:100%;max-width:1180px;margin:auto;padding:0 24px}.section{padding:94px 0;border-top:1px solid rgba(34,49,59,.8);scroll-margin-top:70px}
+    .eyebrow{font:700 11px "Space Mono",monospace;letter-spacing:.12em;color:var(--orange);text-transform:uppercase}.section-title{font-size:clamp(2rem,5vw,4rem);line-height:1.03;margin:13px 0 20px;letter-spacing:-.05em}.lead{max-width:730px;color:var(--muted);font-size:1.04rem;line-height:1.75}
+    .nav{position:sticky;top:0;z-index:30;border-bottom:1px solid transparent;transition:.25s;background:rgba(7,10,13,.7);backdrop-filter:blur(14px)}.nav.scrolled{background:rgba(7,10,13,.95);border-color:var(--line)}.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:700}.mark{border:1px solid var(--orange);color:var(--orange);font:700 12px "Space Mono";padding:7px}.availability{font:10px "Space Mono";color:var(--muted)}.dot{color:var(--green)}.links{display:flex;gap:17px;font:11px "Space Mono";color:var(--muted)}.links a{position:relative;padding:8px 0}.links a:after{content:"";position:absolute;bottom:1px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--orange),var(--cyan));transition:.2s}.links a:hover,.links a.active{color:var(--text)}.links a:hover:after,.links a.active:after{width:100%}.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);padding:8px;border-radius:4px}
+    .hero{min-height:calc(92 * min(var(--vh,1vh),1vh));display:grid;align-items:center;padding:64px 0}.hero-grid{display:grid;grid-template-columns:1.05fr .58fr .85fr;gap:28px;align-items:center}.hero h1{font-size:clamp(3.1rem,6.5vw,6.3rem);line-height:.9;letter-spacing:-.075em;margin:18px 0}.hero h2{font-size:clamp(1.05rem,1.8vw,1.45rem);font-weight:500;margin:0 0 20px;color:#c8d6dc}.hero-copy{font-size:1.05rem;line-height:1.75;color:var(--muted);max-width:570px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:13px 17px;font:600 12px "Space Mono";cursor:pointer;transition:.2s;background:transparent;color:var(--text)}.btn.primary{background:var(--cyan);color:#041015;border-color:var(--cyan)}.btn.orange{background:var(--orange);border-color:var(--orange);color:#160900}.btn:hover{transform:translateY(-2px);border-color:var(--orange)}.meta{margin-top:22px;font:11px "Space Mono";color:var(--muted)}
+    .hero-portrait-wrap{position:relative}.hero-portrait{aspect-ratio:4/5;max-height:440px;overflow:hidden;background:#0b1217;border:1px solid rgba(255,122,24,.78);box-shadow:10px 10px 0 rgba(70,217,238,.12),18px 18px 36px rgba(0,0,0,.32);position:relative}.hero-portrait:after{content:"";position:absolute;inset:5px;border:1px solid rgba(70,217,238,.55);pointer-events:none}.hero-portrait img{width:100%;height:100%;display:block;object-fit:cover;object-position:51% 20%;filter:saturate(.92) contrast(1.03)}.portrait-caption{margin:12px 0 0;font:10px/1.55 "Space Mono";color:#f6b481}.portrait-caption span{color:var(--muted)}
+    .terminal{border:1px solid var(--line);background:linear-gradient(145deg,rgba(17,26,33,.96),rgba(8,13,17,.94));padding:24px;box-shadow:14px 14px 0 rgba(255,122,24,.035)}.term-top{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:13px;color:var(--muted);font:10px "Space Mono"}.term-code{white-space:pre-line;font:12px/1.85 "Space Mono";color:#d9e6e9;margin:18px 0 0}.command{color:var(--cyan)}.prompt{color:var(--orange)}.cursor{display:inline-block;width:8px;height:15px;background:var(--orange);vertical-align:-2px;animation:blink 1s step-end infinite}.mode-controls{display:flex;gap:7px;flex-wrap:wrap;margin-top:19px}.mode-btn,.tab,.skill,.challenge,.copy-btn{background:transparent;border:1px solid var(--line);color:var(--muted);padding:8px 10px;font:10px "Space Mono";cursor:pointer}.mode-btn:hover,.mode-btn.active,.tab.active,.tab:hover{border-color:var(--orange);background:var(--orange-soft);color:var(--text)}.mode-status{margin:14px 0 0;color:var(--muted);font:10px/1.6 "Space Mono";min-height:30px}.status-strip{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font:9px "Space Mono";color:var(--muted)}.status-strip span{border:1px solid rgba(70,217,238,.22);padding:6px}
+    .about-grid,.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px}.academic,.card,.lab-board,.terminal-small,.identity-note{border:1px solid var(--line);background:rgba(13,20,26,.76)}.academic{padding:28px}.academic p{color:var(--muted);margin:10px 0}.academic strong{display:block;font-size:1.3rem}.gpa-current{color:var(--cyan);font-weight:700}.gpa-target{color:#ffc08f;font-weight:700}.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:48px}.stat{padding:22px 16px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat b{display:block;font:700 1.2rem "Space Mono";color:var(--cyan)}.stat span{font-size:.8rem;color:var(--muted)}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{padding:24px;position:relative;transition:border-color .2s,transform .2s;height:100%}.card:hover{border-color:var(--cyan)}.number{font:11px "Space Mono";color:var(--orange)}.card h3{font-size:1.2rem;margin:16px 0 10px}.card p,.detail{color:var(--muted);line-height:1.6;font-size:.93rem}.expand{width:100%;display:flex;justify-content:space-between;align-items:center;background:none;color:var(--text);border:0;padding:0;text-align:left;cursor:pointer}.detail{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}.card.open .detail,.research-row.open .detail{display:block}.card.open .chev{transform:rotate(180deg)}.chev{transition:.2s}
+    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0}.skill-panel{display:none}.skill-panel.active{display:block}.chips{display:flex;flex-wrap:wrap;gap:10px}.skill{background:#0c151a;color:#d8e7e9;padding:10px 12px}.skill:hover,.skill:focus,.skill.selected{border-color:var(--orange);color:var(--orange)}.skill-info{margin-top:16px;min-height:60px;padding:15px;border-left:2px solid var(--orange);background:var(--orange-soft);color:var(--muted)}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.project{padding:25px}.project:nth-child(odd){border-top-color:rgba(255,122,24,.6)}.type{font:10px "Space Mono";color:var(--green);text-transform:uppercase}.project h3{font-size:1.35rem;margin:13px 0}.tags,.notes{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.tag{border:1px solid var(--line);color:#b6c8cd;padding:5px 7px;font:10px "Space Mono"}.pending{display:inline-block;margin-top:17px;font:11px "Space Mono";color:var(--muted)}
+    .lab-board{padding:28px}.badge{display:inline-flex;border:1px solid rgba(255,122,24,.5);color:#ffc08f;font:10px "Space Mono";padding:6px 8px}.lab-flow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:30px 0;overflow:auto;padding-bottom:8px}.node{min-width:130px;text-align:center;padding:17px 10px;border:1px solid var(--line);background:#0b1217;font:10px "Space Mono";color:#dce9eb}.connector{height:1px;min-width:28px;background:linear-gradient(90deg,var(--orange),var(--cyan))}
+    .challenge-board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.challenge{color:var(--text);text-align:left;padding:18px}.challenge:hover,.challenge.active{border-color:var(--orange);background:var(--orange-soft)}.challenge small{display:block;color:var(--muted);margin-top:8px}.research-list{border-top:1px solid var(--line)}.research-row{border-bottom:1px solid var(--line);padding:17px 0}.research-row button{width:100%;display:flex;justify-content:space-between;background:none;border:0;color:var(--text);font-size:1rem;text-align:left;cursor:pointer}.research-row .detail{margin-bottom:0}
+    .timeline{position:relative;margin-top:40px;padding-left:28px;border-left:1px solid var(--line)}.moment{position:relative;padding:0 0 30px}.moment:before{content:"";position:absolute;left:-34px;top:5px;width:11px;height:11px;background:var(--bg);border:2px solid var(--orange);border-radius:50%}.moment b{font:11px "Space Mono";color:var(--cyan)}.moment p{color:var(--muted);margin:8px 0 0;line-height:1.65}
+    .achievement-grid,.github-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.achievement,.gh-card{padding:18px;border:1px solid var(--line);min-height:140px}.achievement strong{display:block;margin-top:20px}.achievement span{display:block;color:var(--muted);font-size:.82rem;margin-top:7px}.achievement svg{color:var(--orange);width:22px;height:22px}.github-grid{grid-template-columns:repeat(4,1fr)}.gh-card b{display:block;margin:12px 0 7px}.gh-card p{font-size:.83rem;color:var(--muted);line-height:1.5}
+    .identity-note{padding:30px;background:linear-gradient(135deg,rgba(255,122,24,.055),rgba(13,20,26,.9) 37%,rgba(70,217,238,.035))}.profile-layout{display:grid;grid-template-columns:1fr 220px;gap:34px;align-items:center}.profile-portrait-wrap{max-width:220px;justify-self:end}.profile-portrait-wrap .hero-portrait{max-height:275px}.lab-note-title{font:700 11px "Space Mono";letter-spacing:.1em;color:var(--orange);text-transform:uppercase}.identity-note p{max-width:760px;color:var(--muted);line-height:1.8}.alias-copy{display:flex;align-items:center;gap:10px;margin-top:21px}.copy-btn{color:var(--text)}.copy-btn:hover{border-color:var(--orange);color:var(--orange)}.copy-status{font:10px "Space Mono";color:var(--green);min-height:18px}.marquee-wrap{border-top:1px solid var(--line);overflow:hidden;position:relative;margin-top:28px}.marquee{display:flex;width:max-content;white-space:nowrap;gap:48px;padding:13px 0;font:10px "Space Mono";color:#91a4aa;animation:marquee 34s linear infinite}.marquee strong{color:var(--orange);font-weight:400}.marquee-wrap:hover .marquee,.marquee-wrap:focus-within .marquee,.marquee-wrap.paused .marquee{animation-play-state:paused}.motion-control{margin-top:14px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .terminal-small{padding:24px;font:12px/1.9 "Space Mono";color:#c7d8db}.interactive-terminal{border:1px solid var(--line);background:linear-gradient(145deg,rgba(17,26,33,.98),rgba(8,13,17,.96));box-shadow:0 0 0 1px rgba(70,217,238,.04),14px 14px 0 rgba(255,122,24,.035);padding:20px;overflow:hidden}.interactive-terminal .term-top{align-items:center}.terminal-badge{color:var(--cyan);font-size:9px;letter-spacing:.05em}.terminal-output{min-height:190px;max-height:360px;overflow-y:auto;padding:16px 4px 8px;white-space:pre-wrap;overflow-wrap:anywhere;color:#c7d8db;font:12px/1.75 "Space Mono"}.terminal-line{animation:terminalEntry .22s ease-out both}.terminal-line.prompt-line{color:var(--orange)}.terminal-line.output-line{color:#b9dfe4}.terminal-line a{color:var(--cyan);text-decoration:underline}.terminal-input-row{display:flex;align-items:center;gap:9px;border-top:1px solid var(--line);padding-top:14px}.terminal-prompt{color:var(--orange);font:12px "Space Mono";white-space:nowrap}.terminal-input{flex:1;min-width:0;background:transparent;border:0;color:var(--text);padding:0;font:12px "Space Mono";outline:0}.terminal-cursor{width:8px;height:16px;background:var(--orange);animation:blink 1s step-end infinite;flex:none}.terminal-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:13px}.quick-commands{display:flex;gap:7px;flex-wrap:wrap}.quick-command,.terminal-clear{background:transparent;border:1px solid var(--line);color:var(--muted);padding:7px 9px;font:10px "Space Mono";cursor:pointer}.quick-command:hover,.quick-command:focus-visible,.terminal-clear:hover,.terminal-clear:focus-visible{border-color:var(--orange);color:var(--text);background:var(--orange-soft)}.terminal-tip{color:var(--muted);font-size:.82rem;margin:14px 0 0}@keyframes terminalEntry{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}.contact-links{display:grid;gap:10px;margin-top:18px}.contact-link{border:1px solid var(--line);padding:12px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);transition:.2s}.contact-link:hover,.contact-link:focus-visible{color:var(--text);border-color:var(--orange);background:var(--orange-soft)}form{padding:25px;border:1px solid var(--line);background:rgba(13,20,26,.76)}label{display:block;font:11px "Space Mono";margin-bottom:7px;color:#cbdadd}input,textarea{width:100%;background:#081015;border:1px solid var(--line);color:var(--text);padding:12px;font:14px "DM Sans";outline:none}textarea{min-height:120px;resize:vertical}input:focus,textarea:focus{border-color:var(--orange)}.field{margin-bottom:17px}.error{display:none;color:var(--danger);font-size:.78rem;margin-top:5px}.form-status{min-height:24px;margin-top:13px;color:var(--green);font-size:.9rem}.email-note{color:var(--muted);font-size:.9rem;line-height:1.6;margin-top:0}
+    footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted)}.foot{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.foot strong{color:var(--text);display:block}.footer-links{display:flex;gap:15px;flex-wrap:wrap}.footer-links a:hover{color:var(--orange)}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--orange);outline-offset:3px}.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.reveal.show{opacity:1;transform:none}
+    .shell{width:100%;max-width:1180px;margin-inline:auto;padding-inline:clamp(17px,3vw,32px)}.section>.shell,.section>.stats{width:100%}.hero{padding-block:clamp(58px,7vw,92px)}.hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(280px,.72fr);gap:clamp(24px,4vw,48px);align-items:center}.hero-grid>.reveal{min-width:0}.terminal{width:100%;min-width:0}.terminal-output{overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}.terminal-input-row{min-width:0}.terminal-input{width:100%;min-width:0}.projects{align-items:stretch}.project{display:flex;flex-direction:column;min-width:0}.project .tags{margin-top:auto;padding-top:18px}.project .expand{flex:none}.contact-grid{align-items:start}.contact-grid>form{min-width:0}.challenge-board,.achievement-grid,.github-grid{align-items:stretch}.gh-card,.achievement{height:100%}.lab-flow{scrollbar-width:thin}.profile-layout{min-width:0}.profile-copy{min-width:0}@media(max-width:1000px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(280px,.86fr)}.hero-portrait-wrap{grid-column:1/-1;max-width:360px}.hero-portrait-wrap.profile-portrait-wrap{grid-column:auto}}@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-portrait-wrap{grid-column:auto}.terminal{max-width:none}.contact-grid{gap:28px}}@media(max-width:560px){.shell{padding-inline:17px}.section{padding-block:64px}.hero{padding-block:58px}.hero h1{font-size:clamp(3rem,15vw,3.35rem)}.actions,.terminal-actions{align-items:stretch}.actions .btn{flex:1 1 170px;justify-content:center}.terminal-actions{flex-direction:column}.quick-commands{width:100%}.quick-command,.terminal-clear{min-height:40px}.quick-command{flex:1}.terminal-clear{width:100%}.terminal-prompt{font-size:10px}.terminal-input{font-size:16px}.profile-layout{gap:24px}}@keyframes blink{50%{opacity:0}}@keyframes gridDrift{to{background-position:46px 46px}}@keyframes scanDrift{to{transform:translateY(73px)}}@keyframes marquee{to{transform:translateX(-50%)}}
+    @media(max-width:1000px){.hero-grid{grid-template-columns:1fr 300px;gap:28px}.hero-portrait-wrap{grid-row:2}.terminal{grid-row:2;max-width:none}}@media(max-width:900px){.links{display:none}.menu-btn{display:block}.links.open{display:flex;position:absolute;top:70px;left:0;right:0;background:#091015;border-bottom:1px solid var(--line);padding:18px 24px;flex-direction:column}.availability{display:none}.hero{min-height:auto;padding:82px 0}.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:30px}.hero-portrait-wrap{grid-row:auto;max-width:360px}.terminal{grid-row:auto;max-width:640px}.grid3,.projects{grid-template-columns:1fr}.achievement-grid{grid-template-columns:repeat(2,1fr)}.github-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.shell{padding:0 17px}.section{padding:70px 0}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.challenge-board{grid-template-columns:repeat(2,1fr)}.achievement-grid,.github-grid{grid-template-columns:1fr}.hero h1{font-size:3.35rem}.profile-layout{grid-template-columns:1fr}.profile-portrait-wrap{max-width:280px;justify-self:start}.lab-flow{justify-content:flex-start}.hero-portrait{max-height:390px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}.signal-layer{display:none}.marquee{width:auto;white-space:normal;transform:none}}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="signal-layer" aria-hidden="true">
+   <span class="signal-line one"></span><span class="signal-line two"></span>
+  </div>
+  <header class="nav" id="site-nav">
+   <div class="shell nav-inner"><a href="#home" class="brand" aria-label="Ravi Yadav home"><span class="mark">ra0X</span><span class="availability"><span class="dot">●</span> building, learning &amp; researching</span></a> <button class="menu-btn" id="menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false"><i data-lucide="menu" aria-hidden="true"></i></button>
+    <nav class="links" id="nav-links" aria-label="Primary navigation"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#research">Research</a><a href="#terminal">Terminal</a><a href="#contact">Contact</a>
+    </nav>
+   </div>
+  </header>
+  <main>
+   <section class="shell hero" id="home">
+    <div class="hero-grid">
+     <div class="reveal">
+      <p class="canva-text eyebrow" style="color: rgb(255, 122, 24); font-weight: 700; font-style: normal; font-size: 11px; letter-spacing: 0.1rem;">/home/ravi/ra0X-lab</p>
+      <h1 class="canva-text" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 32px;">Hi, I’m Ravi.</h1>
+      <h2 class="canva-text" style="color: rgb(200, 214, 220); font-weight: 500; font-style: normal; font-size: 20px;">Computer Engineering Student | Cybersecurity Learner | Security Researcher</h2>
+      <p class="canva-text hero-copy" style="color: rgb(154, 171, 180); font-weight: 400; font-style: normal; font-size: 16px;">I’m Ravi Yadav from Nepal — building, learning, and researching through cybersecurity tools, controlled labs, CTF challenges, and better questions.</p>
+      <div class="actions"><a class="canva-button btn primary" href="#projects" style="background: rgb(70, 217, 238); color: rgb(4, 16, 21); font-weight: 700; font-style: normal; font-size: 16px;">View My Work</a> <a class="canva-button btn" href="https://github.com/raviydvg75" target="_blank" rel="noopener noreferrer" style="background: rgb(13, 20, 26); color: rgb(236, 244, 246); font-weight: 600;"><span class="canva-text" style="color: rgb(236, 244, 246); font-weight: 600; font-style: normal; font-size: 16px;">Explore My GitHub</span><i data-lucide="arrow-up-right" aria-hidden="true" style="width:14px;height:14px"></i></a>
+      </div>
+      <p class="canva-text meta" style="color: rgb(154, 171, 180); font-weight: 400; font-style: normal; font-size: 11px;">4th semester · Pokhara University · Nepal · alias: ra0X</p>
+     </div>
+     <aside class="terminal reveal" aria-label="Ravi Yadav cyber lab profile terminal">
+      <div class="term-top">
+       <span>ravi@ra0X-lab:~</span><span>profile.txt</span>
+      </div>
+      <div class="term-code">
+       <span class="command">$ whoami</span> <span class="prompt">ravi@ra0X-lab</span> <span class="command">$ focus</span> cybersecurity <span class="command">$ status</span> <span id="terminal-status">building • learning • researching</span> <span class="cursor" aria-hidden="true"></span>
+      </div>
+      <div class="mode-controls" role="group" aria-label="Portfolio learning mode"><button class="mode-btn active" type="button" data-mode="observe" aria-pressed="true">observe</button> <button class="mode-btn" type="button" data-mode="analyze" aria-pressed="false">analyze</button> <button class="mode-btn" type="button" data-mode="build" aria-pressed="false">build</button>
+      </div>
+      <p class="mode-status" id="mode-status" aria-live="polite">mode: observe · collecting notes from systems, labs, and learning paths.</p>
+      <div class="status-strip">
+       <span>lab_mode: controlled</span><span>focus: cybersecurity</span><span>alias: ra0X</span>
+      </div>
+     </aside>
+    </div>
+   </section>
+   <section class="section" id="about">
+    <div class="shell about-grid">
+     <div class="reveal">
+      <p class="eyebrow">01 / identity</p>
+      <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">About Me</h2>
+      <p class="canva-text lead" style="color: rgb(154, 171, 180); font-weight: 400; font-style: normal; font-size: 16px;">I’m Ravi Yadav, a Computer Engineering student at Cosmos College of Management &amp; Technology under Pokhara University. My main interest is cybersecurity, especially understanding how systems can be attacked, monitored, and secured.</p><br>
+      <p class="canva-text lead" style="color: rgb(154, 171, 180); font-weight: 400; font-style: normal; font-size: 16px;">I learn through hands-on experimentation — from Linux and networking to security tools, CTF challenges, and small security projects. My long-term direction is toward cybersecurity and cloud security while I keep strengthening my foundations in systems, networking, labs, and security research.</p>
+     </div>
+     <aside class="canva-card academic reveal" style="background: rgb(13, 20, 26);"><span class="eyebrow">academic record</span> <strong>Bachelor of Computer Engineering</strong>
+      <p>Pokhara University</p>
+      <p>Cosmos College of Management &amp; Technology</p>
+      <hr style="border-color:var(--line);margin:20px 0">
+      <p>Expected graduation: 2028</p>
+      <p>Current CGPA: <b class="gpa-current">3.74 / 4.00</b></p>
+      <p>Graduation target: <b class="gpa-target">3.7+ / 4.00</b></p>
+      <p>100% Scholarship</p>
+     </aside>
+    </div>
+    <div class="shell stats reveal" aria-label="Academic facts">
+     <div class="stat">
+      <b>3.74</b><span>current CGPA / 4.00</span>
+     </div>
+     <div class="stat">
+      <b>3.7+</b><span>target at graduation / 4.00</span>
+     </div>
+     <div class="stat">
+      <b>100%</b><span>scholarship</span>
+     </div>
+     <div class="stat">
+      <b>2028</b><span>expected graduation</span>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="focus">
+    <div class="shell">
+     <div class="reveal">
+      <p class="eyebrow">02 / direction</p>
+      <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">What I’m Working Toward</h2>
+     </div>
+     <div class="grid3 reveal">
+      <article class="card">
+       <button class="expand" type="button" aria-expanded="false"><span><span class="number">01</span><h3>CYBERSECURITY</h3></span><span class="chev">⌄</span></button>
+       <p>Building stronger foundations through hands-on learning.</p>
+       <div class="detail">
+        Network security · Linux · Security monitoring · Vulnerability assessment · Threat detection
+       </div>
+      </article>
+      <article class="card">
+       <button class="expand" type="button" aria-expanded="false"><span><span class="number">02</span><h3>OFFENSIVE SECURITY</h3></span><span class="chev">⌄</span></button>
+       <p>Exploring controlled methods for understanding attack surfaces.</p>
+       <div class="detail">
+        Reconnaissance · Web security · Network security · Burp Suite · Nmap · Metasploit · CTFs
+       </div>
+      </article>
+      <article class="card">
+       <button class="expand" type="button" aria-expanded="false"><span><span class="number">03</span><h3>CLOUD SECURITY</h3></span><span class="chev">⌄</span></button>
+       <p>A long-term direction in secure infrastructure and architecture.</p>
+       <div class="detail">
+        Cloud infrastructure · Identity and access management · Secure architecture · Cloud-native security
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="skills">
+    <div class="shell reveal">
+     <p class="eyebrow">03 / toolkit</p>
+     <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">Technical Skills</h2>
+     <div class="tabs" role="tablist" aria-label="Skill categories"><button class="tab active" type="button" role="tab" aria-selected="true" data-tab="security">SECURITY</button> <button class="tab" type="button" role="tab" aria-selected="false" data-tab="development">DEVELOPMENT</button> <button class="tab" type="button" role="tab" aria-selected="false" data-tab="areas">SECURITY AREAS</button>
+     </div>
+     <div class="skill-panel active" id="security">
+      <div class="chips"><button class="skill" type="button" data-detail="Explored for reconnaissance and service enumeration in learning labs.">Nmap</button><button class="skill" type="button" data-detail="Used for packet inspection and protocol analysis in lab environments.">Wireshark</button><button class="skill" type="button" data-detail="Used to explore web requests, testing workflows, and security concepts.">Burp Suite</button><button class="skill" type="button" data-detail="Explored in controlled lab environments for understanding exploitation workflows.">Metasploit</button><button class="skill" type="button" data-detail="Used for log exploration, event investigation, and detection lab work.">Splunk</button><button class="skill" type="button" data-detail="Daily learning environment for systems, networking, and security tools.">Linux</button>
+      </div>
+     </div>
+     <div class="skill-panel" id="development">
+      <div class="chips"><button class="skill" type="button" data-detail="Used for coursework and desktop application development.">Java</button><button class="skill" type="button" data-detail="Used for security experiments, lightweight tools, and scripting practice.">Python</button><button class="skill" type="button" data-detail="Used in data-backed student software projects.">SQL</button><button class="skill" type="button" data-detail="Used to track code changes and maintain learning projects.">Git</button><button class="skill" type="button" data-detail="Primary editor for programming, scripts, and notes.">VS Code</button>
+      </div>
+     </div>
+     <div class="skill-panel" id="areas">
+      <div class="chips"><button class="skill" type="button" data-detail="Exploring defensive controls, protocols, services, and traffic analysis.">Network Security</button><button class="skill" type="button" data-detail="Practicing controlled web testing through labs and CTF-style exercises.">Web Security</button><button class="skill" type="button" data-detail="Learning logging, alerting, and triage concepts.">Security Monitoring</button><button class="skill" type="button" data-detail="A continuing long-term security learning direction.">Cloud Security</button>
+      </div>
+     </div>
+     <div class="skill-info" id="skill-info" aria-live="polite">
+      Select a skill to view its practical learning context.
+     </div>
+    </div>
+   </section>
+   <section class="section" id="terminal">
+    <div class="shell reveal">
+     <p class="eyebrow">04 / explore the lab</p>
+     <h2 class="section-title">Interactive Terminal</h2>
+     <div class="interactive-terminal" aria-label="Simulated interactive portfolio terminal">
+      <div class="term-top"><span>visitor@ra0x-lab:~</span><span class="terminal-badge">interactive portfolio terminal · simulated environment</span>
+      </div>
+      <div class="terminal-output" id="terminal-output" role="log" aria-live="polite" aria-label="Terminal history"></div>
+      <form class="terminal-input-row" id="terminal-form">
+       <label class="sr-only" for="terminal-input">Terminal command</label><span class="terminal-prompt" aria-hidden="true">visitor@ra0x-lab:~$</span><input class="terminal-input" id="terminal-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"><span class="terminal-cursor" aria-hidden="true"></span>
+      </form>
+      <div class="terminal-actions">
+       <div class="quick-commands">
+        <button class="quick-command" type="button" data-terminal-command="help">help</button><button class="quick-command" type="button" data-terminal-command="projects">projects</button><button class="quick-command" type="button" data-terminal-command="skills">skills</button>
+       </div><button class="terminal-clear" id="terminal-clear" type="button">Clear</button>
+      </div>
+      <p class="terminal-tip">Try <span class="mono">help</span> to explore the safe portfolio commands.</p>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="projects">
+    <div class="shell">
+     <div class="reveal">
+      <p class="eyebrow">04 / workbench</p>
+      <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">Selected Projects &amp; Labs</h2>
+     </div>
+     <div class="projects reveal">
+      <article class="card project">
+       <span class="type">student software project</span>
+       <h3>Mero Pasal</h3>
+       <p>A desktop-based Java application for shop inventory management and sales.</p>
+       <div class="tags">
+        <span class="tag">Java</span><span class="tag">Java Swing</span><span class="tag">SQL</span>
+       </div><a class="btn" style="margin-top:18px" href="https://github.com/raviydvg75/ShopInventory" target="_blank" rel="noopener noreferrer">View Mero Pasal on GitHub <i data-lucide="arrow-up-right" aria-hidden="true" style="width:14px;height:14px"></i></a><button class="expand" type="button" aria-expanded="false" style="margin-top:18px"><span class="mono" style="font-size:11px">WHAT I WORKED ON</span><span class="chev">⌄</span></button>
+       <div class="detail">
+        Login system · Dashboard · Inventory management · Billing · Dynamic payment/QR functionality
+       </div>
+      </article>
+      <article class="card project">
+       <span class="type">security tool / experiment</span>
+       <h3>Python Network Port Scanner</h3>
+       <p>A lightweight Python-based network scanning tool created to understand port discovery and basic service enumeration.</p>
+       <div class="tags">
+        <span class="tag">Python</span><span class="tag">Networking</span>
+       </div><button class="expand" type="button" aria-expanded="false" style="margin-top:18px"><span class="mono" style="font-size:11px">WHAT I WORKED ON</span><span class="chev">⌄</span></button>
+       <div class="detail">
+        Port scanning · Basic service detection · Terminal-based interface
+       </div>
+      </article>
+      <article class="card project">
+       <span class="type">defensive security lab</span>
+       <h3>Splunk FTP Brute-Force Detection Lab</h3>
+       <p>A hands-on defensive lab simulating FTP brute-force activity and analyzing resulting logs using Splunk.</p>
+       <div class="tags">
+        <span class="tag">Kali Linux</span><span class="tag">Splunk</span><span class="tag">Linux</span>
+       </div><button class="expand" type="button" aria-expanded="false" style="margin-top:18px"><span class="mono" style="font-size:11px">WHAT I WORKED ON</span><span class="chev">⌄</span></button>
+       <div class="detail">
+        Attack simulation · Log collection · Source IP analysis · Detection · Investigation
+       </div>
+      </article>
+      <article class="card project">
+       <span class="type">security monitoring lab</span>
+       <h3>Windows Security Monitoring Lab</h3>
+       <p>A practical monitoring environment using Windows telemetry and Splunk/Sysmon to explore endpoint event collection and analysis.</p>
+       <div class="tags">
+        <span class="tag">Windows</span><span class="tag">Sysmon</span><span class="tag">Splunk</span>
+       </div><button class="expand" type="button" aria-expanded="false" style="margin-top:18px"><span class="mono" style="font-size:11px">LEARNING CONTEXT</span><span class="chev">⌄</span></button>
+       <div class="detail">
+        A controlled learning environment for understanding endpoint telemetry, collection pipelines, and investigation workflows.
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="lab">
+    <div class="shell reveal">
+     <p class="eyebrow">05 / controlled environment</p>
+     <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">Inside My Cyber Lab</h2>
+     <div class="lab-board">
+      <span class="badge">ra0X lab mode: controlled environment</span>
+      <div class="lab-flow" aria-label="Cyber lab architecture">
+       <div class="node">
+        Kali / Parrot OS
+       </div>
+       <div class="connector"></div>
+       <div class="node">
+        Security Tools
+       </div>
+       <div class="connector"></div>
+       <div class="node">
+        Target Machines
+       </div>
+       <div class="connector"></div>
+       <div class="node">
+        Logs / Telemetry
+       </div>
+       <div class="connector"></div>
+       <div class="node">
+        Splunk / Analysis
+       </div>
+      </div>
+      <p class="lead" style="font-size:.94rem">These are learning and lab environments built to understand systems, security tooling, logging, attack paths, and defensive investigation without treating practice work as production experience.</p>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="research">
+    <div class="shell">
+     <div class="reveal">
+      <p class="eyebrow">06 / research practice</p>
+      <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">Break. Analyze. Understand.</h2>
+      <p class="canva-text lead" style="color: rgb(154, 171, 180); font-weight: 400; font-style: normal; font-size: 16px;">I use CTFs and security labs to move beyond theory. They give me a controlled environment to understand vulnerabilities, analyze attack paths, and practice solving unfamiliar problems.</p>
+     </div>
+     <div class="challenge-board reveal" style="margin-top:28px"><button class="challenge" type="button" data-challenge="Explore how inputs, sessions, and application behavior shape web attack surfaces.">WEB<small>practice area</small></button><button class="challenge" type="button" data-challenge="Practice reasoning about encoding, ciphers, and cryptographic implementation details.">CRYPTO<small>practice area</small></button><button class="challenge" type="button" data-challenge="Explore files, artifacts, metadata, and evidence-oriented analysis.">FORENSICS<small>practice area</small></button><button class="challenge" type="button" data-challenge="Practice finding concealed information in files and media.">STEGANOGRAPHY<small>practice area</small></button><button class="challenge" type="button" data-challenge="Learn how programs behave by examining logic and binaries in controlled exercises.">REVERSE ENGINEERING<small>practice area</small></button><button class="challenge" type="button" data-challenge="Explore protocols, services, traffic, and network-facing systems.">NETWORKING<small>practice area</small></button>
+     </div>
+     <div class="terminal-small reveal" id="challenge-detail" style="margin-top:14px" aria-live="polite">
+      <span class="command">$ challenge selected</span><br>
+       Choose a practice area.<br><br><span class="command">$ workflow</span><br>
+       observe → test → document<br><br><span style="color:var(--green)">controlled environment</span>
+     </div>
+     <div style="margin-top:82px" class="reveal">
+      <p class="eyebrow">07 / technical interests</p>
+      <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">Research &amp; Technical Interests</h2>
+      <p class="canva-text lead" style="color: rgb(154, 171, 180); font-weight: 400; font-style: normal; font-size: 16px;">I’m currently participating in a research fellowship/project environment involving cybersecurity and AI topics. I’m especially interested in AI and cybersecurity, future threats, AI-assisted security, threat detection, security automation, cloud security, OSINT, defensive security, and human-AI collaboration.</p>
+     </div>
+     <div class="research-list reveal" style="margin-top:28px">
+      <div class="research-row">
+       <button type="button" aria-expanded="false">AI and cybersecurity <span>+</span></button>
+       <div class="detail">
+        Question I’m exploring: how can AI-assisted workflows support defenders while introducing new security considerations?
+       </div>
+      </div>
+      <div class="research-row">
+       <button type="button" aria-expanded="false">Future cyber threats &amp; threat detection <span>+</span></button>
+       <div class="detail">
+        Question I’m exploring: how might evolving threat patterns influence practical monitoring and detection work?
+       </div>
+      </div>
+      <div class="research-row">
+       <button type="button" aria-expanded="false">Security automation &amp; cloud security <span>+</span></button>
+       <div class="detail">
+        Question I’m exploring: where can automation support clear, accountable security operations and cloud architecture?
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="journey">
+    <div class="shell reveal">
+     <p class="eyebrow">08 / progression</p>
+     <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">An Evolving Learning Journey</h2>
+     <div class="timeline">
+      <div class="moment">
+       <b>2024–2025</b>
+       <p>Computer Engineering foundations · Programming · Networking · Linux · Databases</p>
+      </div>
+      <div class="moment">
+       <b>2025–2026</b>
+       <p>Cybersecurity exploration · Nmap · Wireshark · Burp Suite · Metasploit · CTFs · Security labs · Splunk</p>
+      </div>
+      <div class="moment">
+       <b>CURRENT</b>
+       <p>Security research · SOC concepts · Threat detection · Cloud security foundations · AI + cybersecurity</p>
+      </div>
+      <div class="moment">
+       <b>FUTURE</b>
+       <p>Cybersecurity · Cloud Security · Security Engineering · Advanced Security Research</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="achievements">
+    <div class="shell reveal">
+     <p class="eyebrow">09 / foundations</p>
+     <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">A Few Things I’m Building On</h2>
+     <div class="achievement-grid">
+      <div class="achievement">
+       <i data-lucide="award" aria-hidden="true"></i><strong>100% Scholarship</strong><span>Pokhara University</span>
+      </div>
+      <div class="achievement">
+       <i data-lucide="book-open" aria-hidden="true"></i><strong>Current CGPA</strong><span>3.74 / 4.00</span>
+      </div>
+      <div class="achievement">
+       <i data-lucide="target" aria-hidden="true"></i><strong>Graduation target</strong><span>3.7+ / 4.00</span>
+      </div>
+      <div class="achievement">
+       <i data-lucide="graduation-cap" aria-hidden="true"></i><strong>Computer Engineering</strong><span>Expected graduation: 2028</span>
+      </div>
+      <div class="achievement">
+       <i data-lucide="shield" aria-hidden="true"></i><strong>Cybersecurity</strong><span>Hands-on labs + CTF practice</span>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="github">
+    <div class="shell reveal">
+     <p class="eyebrow">10 / ra0X public workbench</p>
+     <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">Code, Experiments &amp; Write-ups</h2>
+     <p class="canva-text lead" style="color: rgb(154, 171, 180); font-weight: 400; font-style: normal; font-size: 16px;">I use GitHub as ra0X to keep selected projects, experiments, security tools, write-ups, and things I build while learning.</p><a class="btn" style="margin:22px 0 28px" href="https://github.com/raviydvg75" target="_blank" rel="noopener noreferrer">Explore My GitHub · ra0X <i data-lucide="arrow-up-right" aria-hidden="true" style="width:14px;height:14px"></i></a>
+     <div class="github-grid">
+      <div class="gh-card">
+       <span class="type">project</span><b>Mero Pasal</b>
+       <p>Java desktop inventory and sales application.</p>
+      </div>
+      <div class="gh-card">
+       <span class="type">experiment</span><b>Port Scanner</b>
+       <p>Python networking and service enumeration practice.</p>
+      </div>
+      <div class="gh-card">
+       <span class="type">lab</span><b>Splunk Detection</b>
+       <p>FTP brute-force simulation and log analysis.</p>
+      </div>
+      <div class="gh-card">
+       <span class="type">write-up collection</span><b>CTF &amp; Research</b>
+       <p>Security challenge notes and experiments.</p><a class="btn" style="margin-top:16px" href="https://github.com/raviydvg75/CyberSecurity-" target="_blank" rel="noopener noreferrer">View CyberSecurity Work <i data-lucide="arrow-up-right" aria-hidden="true" style="width:14px;height:14px"></i></a>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="profile">
+    <div class="shell reveal">
+     <p class="eyebrow">11 / closing notes</p>
+     <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">The Person Behind ra0X</h2>
+     <article class="identity-note">
+      <div class="profile-layout">
+       <div class="profile-copy">
+        <p class="lab-note-title">lab note / portrait and identity</p>
+        <p class="canva-text" style="color: rgb(154, 171, 180); font-weight: 400; font-style: normal; font-size: 16px;">The portrait now lives at the top of this site: a small identity marker alongside the work. Ravi is a student learning through controlled practice, evidence, documentation, and continuous improvement — not presenting lab work as professional production experience.</p>
+       </div>
+       <figure class="hero-portrait-wrap profile-portrait-wrap">
+        <div class="hero-portrait"><img class="canva-image" loading="lazy" src="assets/ravi-yadav.jpg" alt="Portrait of Ravi Yadav">
+        </div>
+        <figcaption class="canva-text portrait-caption" style="color: rgb(246, 180, 129); font-weight: 400; font-style: normal; font-size: 10px;">ravi_yadav.jpg · identity: Ravi Yadav · alias: ra0X</figcaption>
+       </figure>
+      </div>
+      <div class="alias-copy">
+       <button class="copy-btn" id="copy-alias" type="button" aria-label="Copy ra0X alias">copy handle: ra0X</button><span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+      </div>
+      <div class="marquee-wrap" id="marquee-wrap">
+       <span class="sr-only">building, breaking, testing, researching, documenting, learning. Cybersecurity, network security, cloud security, security research.</span>
+       <div class="marquee" aria-hidden="true">
+        <span><strong>building</strong> · breaking · testing · researching · documenting · learning · cybersecurity · network security · cloud security · security research ·</span><span><strong>building</strong> · breaking · testing · researching · documenting · learning · cybersecurity · network security · cloud security · security research ·</span>
+       </div>
+      </div><button class="copy-btn motion-control" id="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
+     </article>
+    </div>
+   </section>
+   <section class="section" id="contact">
+    <div class="shell">
+     <div class="reveal">
+      <p class="eyebrow">12 / contact</p>
+      <h2 class="canva-text section-title" style="color: rgb(236, 244, 246); font-weight: 700; font-style: normal; font-size: 24px;">Let’s Connect</h2>
+      <p class="canva-text lead" style="color: rgb(154, 171, 180); font-weight: 400; font-style: normal; font-size: 16px;">Interested in cybersecurity, security research, CTFs, labs, or useful engineering projects? Explore Ravi’s learning work on GitHub, find CTF-related content on YouTube, or prepare an email here.</p>
+     </div>
+     <div class="contact-grid reveal" style="margin-top:30px">
+      <aside>
+       <div class="terminal-small">
+        <span class="command">$ contact --open</span><br>
+         github &nbsp;&nbsp;→ ra0X<br>
+         linkedin → Ravi Yadav<br>
+         youtube &nbsp;&nbsp;→ CTF Guy 13<br>
+         email &nbsp;&nbsp;&nbsp; → raviydvg75@gmail.com
+       </div>
+       <div class="contact-links"><a class="contact-link" href="https://github.com/raviydvg75" target="_blank" rel="noopener noreferrer" aria-label="Open Ravi Yadav's GitHub profile"><span>GitHub · ra0X</span><i data-lucide="github" aria-hidden="true"></i></a> <a class="contact-link" href="https://www.linkedin.com/in/ravi-yadav-%F0%9F%87%B3%F0%9F%87%B5-a69475412?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="Open Ravi Yadav's LinkedIn profile"><span>LinkedIn · Ravi Yadav</span><i data-lucide="linkedin" aria-hidden="true"></i></a> <a class="contact-link" href="https://youtube.com/@ctfguy13?si=rzzHuCV60BG3MD3B" target="_blank" rel="noopener noreferrer" aria-label="Open CTF Guy 13 on YouTube"><span>YouTube · CTF Guy 13</span><i data-lucide="youtube" aria-hidden="true"></i></a> <a class="contact-link" href="mailto:raviydvg75@gmail.com"><span>Email · raviydvg75@gmail.com</span><i data-lucide="mail" aria-hidden="true"></i></a>
+       </div>
+      </aside>
+      <p class="email-note">Your message is saved for Ravi, then your mail app opens with a prepared draft to <strong>raviydvg75@gmail.com</strong>. Press Send in your mail app to deliver it.</p>
+      <div class="field">
+       <label for="name">NAME</label><input id="name" name="name" type="text" autocomplete="name">
+       <p class="error" id="name-error">Please enter your name.</p>
+      </div>
+      <div class="field">
+       <label for="email">EMAIL</label><input id="email" name="email" type="email" autocomplete="email">
+       <p class="error" id="email-error">Please enter a valid email address.</p>
+      </div>
+      <div class="field">
+       <label for="message">MESSAGE</label><textarea id="message" name="message"></textarea>
+       <p class="error" id="message-error">Please enter a message.</p>
+      </div><button class="canva-button btn primary" type="submit" style="background: rgb(70, 217, 238); color: rgb(4, 16, 21); font-weight: 700;"><span class="canva-text" style="color: rgb(4, 16, 21); font-weight: 700; font-style: normal; font-size: 16px;">Save &amp; prepare email</span><i data-lucide="send" aria-hidden="true" style="width:14px;height:14px"></i></button>
+      <p class="form-status" id="form-status" role="status"></p>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer>
+   <div class="shell foot">
+    <div>
+     <strong>Ravi Yadav</strong><span>Computer Engineering • Cybersecurity • Research</span><br><em>Built while learning. Built as ra0X.</em>
+    </div>
+    <div class="footer-links">
+     <a href="https://github.com/raviydvg75" target="_blank" rel="noopener noreferrer" aria-label="Open Ravi Yadav's GitHub profile">GitHub</a><a href="https://www.linkedin.com/in/ravi-yadav-%F0%9F%87%B3%F0%9F%87%B5-a69475412?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="Open Ravi Yadav's LinkedIn profile">LinkedIn</a><a href="https://youtube.com/@ctfguy13?si=rzzHuCV60BG3MD3B" target="_blank" rel="noopener noreferrer" aria-label="Open CTF Guy 13 on YouTube">YouTube</a><a href="mailto:raviydvg75@gmail.com">Email</a>
+    </div>
+   </div>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded",()=>{
+      lucide.createIcons();
+      const nav=document.getElementById("site-nav"),menu=document.getElementById("menu-button"),links=document.getElementById("nav-links");
+      window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",scrollY>12),{passive:true});
+      menu.addEventListener("click",()=>{const open=links.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.setAttribute("aria-label",open?"Close navigation menu":"Open navigation menu")});
+      document.addEventListener("keydown",e=>{if(e.key==="Escape"){links.classList.remove("open");menu.setAttribute("aria-expanded","false")}});
+      links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{links.classList.remove("open");menu.setAttribute("aria-expanded","false")}));
+      const sections=document.querySelectorAll("main section[id]"),navLinks=links.querySelectorAll("a");
+      const activeObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)navLinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-35% 0px -55%"});sections.forEach(s=>activeObserver.observe(s));
+      const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");revealObserver.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(e=>revealObserver.observe(e));
+      document.querySelectorAll(".expand").forEach(btn=>btn.addEventListener("click",()=>{const card=btn.closest(".card"),open=card.classList.toggle("open");btn.setAttribute("aria-expanded",String(open))}));
+      document.querySelectorAll(".research-row button").forEach(btn=>btn.addEventListener("click",()=>{const row=btn.closest(".research-row"),open=row.classList.toggle("open");btn.setAttribute("aria-expanded",String(open))}));
+      document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>{x.classList.remove("active");x.setAttribute("aria-selected","false")});document.querySelectorAll(".skill-panel").forEach(x=>x.classList.remove("active"));tab.classList.add("active");tab.setAttribute("aria-selected","true");document.getElementById(tab.dataset.tab).classList.add("active")}));
+      document.querySelectorAll(".skill").forEach(skill=>skill.addEventListener("click",()=>{document.querySelectorAll(".skill").forEach(x=>x.classList.remove("selected"));skill.classList.add("selected");document.getElementById("skill-info").textContent=skill.dataset.detail}));
+      document.querySelectorAll(".challenge").forEach(c=>c.addEventListener("click",()=>{document.querySelectorAll(".challenge").forEach(x=>x.classList.remove("active"));c.classList.add("active");document.getElementById("challenge-detail").innerHTML='<span class="command">$ challenge selected</span><br>'+c.textContent.trim().replace("practice area","")+'<br><br><span class="command">$ practice area</span><br>'+c.dataset.challenge+'<br><br><span style="color:var(--green)">observe → test → document · controlled environment</span>'}));
+      const modes={observe:{status:"mode: observe · collecting notes from systems, labs, and learning paths.",terminal:"building • learning • researching"},analyze:{status:"mode: analyze · reviewing patterns, telemetry, and controlled challenge evidence.",terminal:"analyzing • documenting • learning"},build:{status:"mode: build · shaping small tools, labs, write-ups, and stronger foundations.",terminal:"building • testing • researching"}};
+      document.querySelectorAll(".mode-btn").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".mode-btn").forEach(x=>{x.classList.remove("active");x.setAttribute("aria-pressed","false")});button.classList.add("active");button.setAttribute("aria-pressed","true");document.getElementById("mode-status").textContent=modes[button.dataset.mode].status;document.getElementById("terminal-status").textContent=modes[button.dataset.mode].terminal}));
+      const copyButton=document.getElementById("copy-alias"),copyStatus=document.getElementById("copy-status");copyButton.addEventListener("click",async()=>{try{await navigator.clipboard.writeText("ra0X");copyStatus.textContent="ra0X copied."}catch(e){copyStatus.textContent="Copy unavailable — handle: ra0X."}setTimeout(()=>copyStatus.textContent="",3000)});
+      const marqueeWrap=document.getElementById("marquee-wrap"),motionToggle=document.getElementById("motion-toggle");motionToggle.addEventListener("click",()=>{const paused=marqueeWrap.classList.toggle("paused");motionToggle.textContent=paused?"Resume motion":"Pause motion";motionToggle.setAttribute("aria-pressed",String(paused))});
+    });
+
+    const terminalOutput=document.getElementById("terminal-output"),terminalForm=document.getElementById("terminal-form"),terminalInput=document.getElementById("terminal-input"),terminalClear=document.getElementById("terminal-clear");
+    const terminalHistory=[];let historyIndex=0;
+    const terminalCommands={
+      whoami:["ra0x","Ravi Yadav · Computer Engineering student · cybersecurity learner"],
+      ls:["cybersecurity/  offensive-security/  defensive-security/  development/  networking/  research/  ctf/","skills: Linux · Networking · Nmap · Wireshark · Burp Suite · Metasploit · Splunk · Sysmon · Python · Java · SQL · Git · OSINT"],
+      skills:["[security] Nmap, Wireshark, Burp Suite, Metasploit, Splunk, Sysmon, Linux, Networking","[development] Python, Java, SQL, Git, GitHub, VS Code","[security-areas] Network Security, Web Security, SOC Monitoring, Threat Detection, Digital Forensics, Cloud Security, OSINT, Security Research","status: exploring through labs, projects, CTFs and research"],
+      projects:["01  Mero Pasal — Java desktop inventory and sales application","    Java Swing · SQL · login · dashboard · inventory · billing · payment/QR","02  Python Network Port Scanner — port discovery and basic service enumeration","    Python · networking · terminal interface · basic service detection","03  Splunk FTP Brute-Force Detection Lab — simulated attack and log investigation","    Kali Linux · Splunk · Linux · source IP analysis · detection · dashboards","04  Windows Security Monitoring Lab — endpoint telemetry and event analysis","    Windows · Sysmon · Splunk · Universal Forwarder","05  CTF & Security Research — controlled practice across web, crypto, forensics, steganography, reversing and networking"],
+      "cat about.txt":["Ravi is a Computer Engineering student at Cosmos College under Pokhara University, learning cybersecurity through Linux, networking, security tools, CTF challenges, labs, projects, research, and documentation. His direction is toward security operations, penetration testing, and cloud security."],
+      "cat lab.txt":["lab_mode: controlled learning environment","stack: Kali / Parrot OS → security tools → target machines → logs / telemetry → Splunk / analysis","practice: virtual machines · Metasploitable · Linux · Sysmon · network analysis","principle: observe → test → document"],
+      "cat research.txt":["AI and cybersecurity · future cyber threats · AI-assisted cybersecurity · threat detection · security automation · cloud security · OSINT · defensive security · human-AI collaboration","ongoing research fellowship/project work; no invented publications"],
+      "cat contact.txt":["email: raviydvg75@gmail.com","github: github.com/raviydvg75","linkedin: Ravi Yadav profile","youtube: CTF Guy 13"],
+      pwd:["/home/ravi/ra0x/cyberlab"],date:["portfolio session active · local interface time not collected"],
+      help:["whoami  ls  skills  projects  cat about.txt  cat lab.txt  cat research.txt  cat contact.txt  pwd  date  clear  help"]
+    };
+    function addTerminalLine(text,kind="output-line",links=false){const line=document.createElement("div");line.className="terminal-line "+kind;if(links&&text.startsWith("github:")){line.append("github: ");const a=document.createElement("a");a.href="https://github.com/raviydvg75";a.target="_blank";a.rel="noopener noreferrer";a.textContent="github.com/raviydvg75";line.append(a)}else if(links&&text.startsWith("linkedin:")){line.append("linkedin: ");const a=document.createElement("a");a.href="https://www.linkedin.com/in/ravi-yadav-%F0%9F%87%B3%F0%9F%87%B5-a69475412?utm_source=share_via&utm_content=profile&utm_medium=member_android";a.target="_blank";a.rel="noopener noreferrer";a.textContent="Ravi Yadav profile";line.append(a)}else if(links&&text.startsWith("youtube:")){line.append("youtube: ");const a=document.createElement("a");a.href="https://youtube.com/@ctfguy13?si=rzzHuCV60BG3MD3B";a.target="_blank";a.rel="noopener noreferrer";a.textContent="CTF Guy 13";line.append(a)}else line.textContent=text;terminalOutput.append(line);terminalOutput.scrollTop=terminalOutput.scrollHeight}
+    function clearTerminal(){terminalOutput.replaceChildren();addTerminalLine("visitor@ra0x-lab:~$ ready — type help to explore","output-line")}
+    function runTerminal(raw){const command=raw.trim().toLowerCase();if(!command)return;addTerminalLine("visitor@ra0x-lab:~$ "+raw,"prompt-line");if(command==="clear"){clearTerminal();terminalInput.focus();return}const result=terminalCommands[command];if(result)result.forEach(line=>addTerminalLine(line,"output-line",command==="cat contact.txt"));else addTerminalLine("command not found: "+raw+". Try help to see available portfolio commands.");terminalInput.focus()}
+    clearTerminal();terminalForm.addEventListener("submit",event=>{event.preventDefault();const value=terminalInput.value;if(value.trim()){terminalHistory.push(value);historyIndex=terminalHistory.length;runTerminal(value);terminalInput.value=""}});terminalInput.addEventListener("keydown",event=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==="l"){event.preventDefault();clearTerminal()}else if(event.key==="ArrowUp"){event.preventDefault();if(historyIndex>0)terminalInput.value=terminalHistory[--historyIndex]||""}else if(event.key==="ArrowDown"){event.preventDefault();if(historyIndex<terminalHistory.length)terminalInput.value=terminalHistory[++historyIndex]||""}});document.querySelectorAll("[data-terminal-command]").forEach(button=>button.addEventListener("click",()=>{runTerminal(button.dataset.terminalCommand)}));terminalClear.addEventListener("click",clearTerminal);document.querySelector('a[href="#projects"]').addEventListener("click",()=>{if(!terminalOutput.textContent.includes("viewing: /projects"))addTerminalLine("viewing: /projects")});
+
+    const form=document.getElementById("contact-form"),status=document.getElementById("form-status");
+    form.addEventListener("submit",event=>{
+      event.preventDefault();
+      const name=form.name.value.trim(),email=form.email.value.trim(),message=form.message.value.trim();
+      const validEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      [["name",!!name],["email",validEmail],["message",!!message]]
+        .forEach(([id,ok])=>document.getElementById(id+"-error").style.display=ok?"none":"block");
+      if(!name||!validEmail||!message)return;
+      const subject=encodeURIComponent(`Portfolio message from ${name}`);
+      const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      status.style.color="var(--green)";
+      status.innerHTML='Opening your email app… <a class="btn orange" style="margin-top:10px" href="mailto:raviydvg75@gmail.com?subject='+subject+'&body='+body+'">Open email draft</a>';
+      window.location.href=`mailto:raviydvg75@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
