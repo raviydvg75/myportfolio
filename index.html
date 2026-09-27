@@ -1,2517 +1,2155 @@
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Ravi Yadav, Computer Engineering student, cybersecurity learner, and security researcher.">
-  <title>Ravi Yadav — Cybersecurity Portfolio</title>
+  <meta charset="UTF-8" />
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Ravi Yadav (ra0X), Computer Engineering student and cybersecurity learner building practical skills through labs, projects, CTFs and security research."
+  />
+
+  <meta name="author" content="Ravi Yadav" />
+
+  <meta
+    name="keywords"
+    content="Ravi Yadav, ra0X, cybersecurity, computer engineering, penetration testing, SOC, security research, CTF, Linux, networking"
+  />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ravi Yadav | ra0X Cybersecurity Portfolio" />
+  <meta
+    property="og:description"
+    content="Cybersecurity portfolio of Ravi Yadav (ra0X), featuring security labs, projects, CTF practice and research."
+  />
+  <meta property="og:url" content="https://raviydvg75.github.io/" />
+  <meta property="og:image" content="images/portrait.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="Ravi Yadav | ra0X Cybersecurity Portfolio"
+  />
+  <meta
+    name="twitter:description"
+    content="Cybersecurity portfolio of Ravi Yadav (ra0X)."
+  />
+  <meta name="twitter:image" content="images/portrait.jpg" />
+
+  <meta name="theme-color" content="#081017" />
+
+  <title>Ravi Yadav | ra0X Cybersecurity Portfolio</title>
+
+  <!-- Performance: establish connection early -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Typography -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    /* =========================================================
-   FINAL UI — CLASSIC MINIMAL PROFESSIONAL
-   Visual-only override
-   ========================================================= */
+    :root {
+      --bg: #081017;
+      --surface: #0d1821;
+      --surface-2: #111f2a;
+      --line: rgba(125, 180, 197, 0.2);
+      --text: #e7f4f6;
+      --muted: #8ca9b2;
+      --orange: #ff8b3d;
+      --cyan: #48e0e8;
+      --green: #91e6a6;
+      --danger: #ff7777;
+
+      --max-width: 1180px;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 86px;
+    }
+
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+
+      background:
+        linear-gradient(
+          rgba(8, 16, 23, 0.96),
+          rgba(8, 16, 23, 0.98)
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 48px,
+          rgba(72, 224, 232, 0.035) 49px
+        );
+
+      color: var(--text);
+
+      font-family:
+        "Inter",
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 110px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        monospace;
+
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
 
-:root {
-  --bg: #f8fafc;
-  --panel: #ffffff;
-  --panel2: #f8fafc;
-  --line: #e5e7eb;
-  --text: #111827;
-  --muted: #64748b;
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 42px;
+    }
 
-  --cyan: #2563eb;
-  --cyan-soft: rgba(37, 99, 235, 0.07);
+    .section-heading h2 {
+      margin-top: 10px;
 
-  --orange: #2563eb;
-  --orange-soft: rgba(37, 99, 235, 0.07);
+      color: var(--text);
 
-  --green: #2563eb;
-  --danger: #dc2626;
-}
+      font-size: clamp(2.2rem, 5vw, 3.7rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
 
-/* ================= GLOBAL ================= */
+    .section-heading p {
+      margin-top: 20px;
 
-html {
-  background: var(--bg);
-  scroll-behavior: smooth;
-}
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: "DM Sans", sans-serif;
-  line-height: 1.7;
-}
+    .muted {
+      color: var(--muted);
+    }
 
-/* Remove cyberpunk background */
-body:before,
-.signal-layer {
-  display: none !important;
-}
+    .accent {
+      color: var(--orange);
+    }
 
-::selection {
-  background: #dbeafe;
-  color: #1e3a8a;
-}
+    .cyan {
+      color: var(--cyan);
+    }
 
-.shell {
-  max-width: 1160px;
-}
+    /* =========================
+       NAVIGATION
+    ========================== */
 
-/* ================= NAVBAR ================= */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
 
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 30;
+      border-bottom: 1px solid var(--line);
 
-  background: rgba(248, 250, 252, 0.96);
-  border-bottom: 1px solid transparent;
+      background: rgba(8, 16, 23, 0.88);
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
 
-  transition: background .2s ease, border-color .2s ease;
-}
+    .nav-inner {
+      display: flex;
+      min-height: 72px;
 
-.nav.scrolled {
-  background: rgba(248, 250, 252, 0.98);
-  border-color: var(--line);
-}
+      align-items: center;
+      justify-content: space-between;
 
-.nav-inner {
-  height: 78px;
+      gap: 24px;
+    }
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
 
-  gap: 30px;
-}
+      color: var(--text);
 
-/* Brand */
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
 
-.brand {
-  display: flex;
-  align-items: center;
+    .brand-mark {
+      display: grid;
 
-  gap: 14px;
+      width: 34px;
+      height: 34px;
 
-  color: var(--text);
-  font-size: 16px;
-  font-weight: 700;
+      place-items: center;
 
-  white-space: nowrap;
-}
+      border: 1px solid var(--orange);
+      border-radius: 9px;
 
-.mark {
-  border: 1px solid #cbd5e1;
+      color: var(--orange);
 
-  background: #ffffff;
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-  color: #111827;
+      font-size: 0.8rem;
+    }
 
-  font: 700 14px "Space Mono";
+    .brand small {
+      display: block;
 
-  padding: 8px 10px;
+      color: var(--muted);
 
-  border-radius: 7px;
-}
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-.availability {
-  color: var(--muted);
-  font: 11px "Space Mono";
-}
+      font-size: 0.72rem;
+      font-weight: 400;
+    }
 
-.dot {
-  color: #2563eb;
-}
+    .nav-links {
+      display: flex;
 
-/* Desktop navigation */
+      align-items: center;
+      gap: 5px;
 
-.links {
-  display: flex;
-  align-items: center;
+      list-style: none;
+    }
 
-  gap: 28px;
+    .nav-links a {
+      position: relative;
 
-  margin-left: auto;
+      padding: 9px 11px;
 
-  font: 500 13px "Space Mono";
+      color: var(--muted);
 
-  color: #64748b;
-}
+      font-size: 0.95rem;
+      font-weight: 500;
 
-.links a {
-  position: relative;
+      transition:
+        color 0.2s ease,
+        background 0.2s ease;
+    }
 
-  padding: 10px 2px;
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
 
-  transition: color .2s ease;
-}
+    .nav-links a.active::after {
+      position: absolute;
 
-.links a:after {
-  content: "";
+      right: 11px;
+      bottom: 2px;
+      left: 11px;
 
-  position: absolute;
+      height: 2px;
 
-  left: 0;
-  bottom: 3px;
+      background: var(--orange);
 
-  width: 0;
-  height: 2px;
+      content: "";
+    }
 
-  background: #2563eb;
+    .menu-button {
+      display: none;
 
-  transition: width .2s ease;
-}
+      border: 1px solid var(--line);
+      border-radius: 9px;
 
-.links a:hover,
-.links a.active {
-  color: #111827;
-}
+      background: transparent;
+      color: var(--text);
 
-.links a:hover:after,
-.links a.active:after {
-  width: 100%;
-}
+      cursor: pointer;
 
-/* Mobile menu button */
+      padding: 8px 10px;
+    }
 
-.menu-btn {
-  display: none;
+    /* =========================
+       HERO
+    ========================== */
 
-  background: #ffffff;
+    .hero {
+      min-height: calc(100vh - 72px);
 
-  border: 1px solid var(--line);
+      display: grid;
+      align-items: center;
 
-  color: var(--text);
+      padding: 100px 0 90px;
+    }
 
-  padding: 9px;
+    .hero-grid {
+      display: grid;
 
-  border-radius: 7px;
-}
+      grid-template-columns: 1.05fr 0.95fr;
 
-/* ================= SECTIONS ================= */
+      align-items: center;
 
-.section {
-  padding: 100px 0;
+      gap: 70px;
+    }
 
-  border-top: 1px solid var(--line);
+    .hero h1 {
+      max-width: 800px;
 
-  scroll-margin-top: 90px;
-}
+      margin: 16px 0 24px;
 
-.eyebrow {
-  color: #2563eb;
+      font-size: clamp(3.4rem, 10vw, 8rem);
 
-  font: 700 11px "Space Mono";
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+    }
 
-  letter-spacing: .1em;
+    .hero h1 span {
+      display: block;
 
-  text-transform: uppercase;
-}
+      color: var(--orange);
 
-.section-title {
-  color: var(--text);
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-  font-weight: 700;
+      font-size: 0.35em;
+      letter-spacing: 0;
+    }
 
-  letter-spacing: -.045em;
-}
+    .hero-copy {
+      max-width: 650px;
 
-.lead {
-  color: var(--muted);
-}
+      color: var(--muted);
 
-/* ================= HERO ================= */
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+      line-height: 1.8;
+    }
 
-.hero {
-  background: var(--bg);
-}
+    .status-line {
+      margin-top: 18px;
 
-.hero h1 {
-  color: #0f172a;
+      color: var(--green);
 
-  font-weight: 700;
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-  letter-spacing: -.07em;
-}
+      font-size: 0.92rem;
+    }
 
-.hero h2 {
-  color: #334155;
-}
+    .actions {
+      display: flex;
 
-.hero-copy {
-  color: var(--muted);
-}
+      flex-wrap: wrap;
 
-.meta {
-  color: #94a3b8;
-}
+      gap: 12px;
 
-/* ================= BUTTONS ================= */
+      margin-top: 30px;
+    }
 
-.btn {
-  border: 1px solid #cbd5e1;
+    .button {
+      display: inline-flex;
 
-  background: #ffffff;
+      min-height: 46px;
 
-  color: #1e293b;
+      align-items: center;
+      justify-content: center;
 
-  border-radius: 7px;
+      border: 1px solid var(--orange);
+      border-radius: 10px;
 
-  padding: 12px 17px;
+      padding: 10px 18px;
 
-  box-shadow: none;
-}
+      background: var(--orange);
+      color: #1a100a;
 
-.btn.primary,
-.btn.orange {
-  background: #2563eb;
+      cursor: pointer;
 
-  border-color: #2563eb;
+      font-weight: 800;
 
-  color: #ffffff;
-}
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
 
-.btn:hover {
-  transform: translateY(-1px);
+    .button:hover {
+      transform: translateY(-2px);
+    }
 
-  border-color: #2563eb;
+    .button.secondary {
+      border-color: var(--line);
 
-  box-shadow: 0 4px 12px rgba(15, 23, 42, .08);
-}
+      background: transparent;
+      color: var(--text);
+    }
 
-/* ================= TERMINALS ================= */
+    /* =========================
+       TERMINALS
+    ========================== */
 
-.terminal,
-.interactive-terminal {
-  background: #0f172a;
+    .preview-terminal,
+    .terminal {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
 
-  border: 1px solid #1e293b;
+      background: rgba(13, 24, 33, 0.9);
 
-  border-radius: 10px;
+      box-shadow:
+        0 20px 80px rgba(0, 0, 0, 0.25);
+    }
 
-  box-shadow: 0 12px 30px rgba(15, 23, 42, .10);
-}
+    .preview-terminal {
+      overflow: hidden;
+    }
 
-.term-top {
-  border-color: #334155;
+    .terminal-bar {
+      display: flex;
 
-  color: #94a3b8;
-}
+      align-items: center;
 
-.term-code {
-  color: #dbeafe;
-}
+      gap: 7px;
 
-.command {
-  color: #60a5fa !important;
-}
+      border-bottom: 1px solid var(--line);
 
-.prompt {
-  color: #93c5fd;
-}
+      padding: 13px 17px;
+    }
 
-.cursor,
-.terminal-cursor {
-  background: #60a5fa;
-}
+    .terminal-dot {
+      width: 9px;
+      height: 9px;
 
-.mode-btn,
-.quick-command,
-.terminal-clear {
-  border-color: #334155;
+      border-radius: 50%;
 
-  color: #94a3b8;
+      background: var(--orange);
+    }
 
-  border-radius: 6px;
-}
+    .terminal-dot:nth-child(2) {
+      background: #e6c85c;
+    }
 
-.mode-btn:hover,
-.mode-btn.active,
-.quick-command:hover,
-.quick-command:focus-visible,
-.terminal-clear:hover,
-.terminal-clear:focus-visible {
-  border-color: #60a5fa;
+    .terminal-dot:nth-child(3) {
+      background: var(--green);
+    }
 
-  background: rgba(96,165,250,.08);
+    .terminal-label {
+      margin-left: auto;
 
-  color: #ffffff;
-}
+      color: var(--muted);
 
-.mode-status {
-  color: #94a3b8;
-}
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-.status-strip {
-  border-color: #334155;
-}
+      font-size: 0.72rem;
+    }
 
-.status-strip span {
-  border-color: #334155;
+    .preview-body {
+      padding: 30px;
 
-  color: #94a3b8;
-}
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-/* ================= ABOUT ================= */
+      font-size: 0.9rem;
+    }
 
-.academic,
-.card,
-.lab-board,
-.terminal-small {
-  background: #ffffff;
+    .prompt {
+      color: var(--orange);
+    }
 
-  border: 1px solid var(--line);
+    .preview-output {
+      margin-top: 20px;
 
-  border-radius: 10px;
-}
+      color: var(--cyan);
+    }
 
-.academic {
-  padding: 30px;
+    /* =========================
+       ABOUT
+    ========================== */
 
-  box-shadow: 0 4px 16px rgba(15,23,42,.035);
-}
+    .about-grid,
+    .contact-grid {
+      display: grid;
 
-.academic p {
-  color: var(--muted);
-}
+      grid-template-columns: 0.85fr 1.15fr;
 
-.academic strong {
-  color: var(--text);
-}
+      gap: 55px;
 
-.gpa-current,
-.gpa-target {
-  color: #2563eb;
-}
+      align-items: center;
+    }
 
-/* ================= STATS ================= */
+    .portrait-wrap {
+      max-width: 370px;
 
-.stats {
-  border-color: var(--line);
-}
+      margin-inline: auto;
+    }
 
-.stat {
-  border-color: var(--line);
-}
+    .portrait {
+      display: block;
 
-.stat b {
-  color: #2563eb;
-}
+      width: 100%;
 
-.stat span {
-  color: var(--muted);
-}
+      aspect-ratio: 4 / 5;
 
-/* ================= CARDS ================= */
+      border: 1px solid var(--cyan);
+      border-radius: var(--radius);
 
-.card {
-  color: var(--text);
+      background: var(--surface-2);
 
-  box-shadow: 0 2px 10px rgba(15,23,42,.025);
+      object-fit: cover;
 
-  transition:
-    transform .2s ease,
-    border-color .2s ease,
-    box-shadow .2s ease;
-}
+      box-shadow:
+        12px 12px 0 rgba(255, 139, 61, 0.17);
+    }
 
-.card:hover {
-  border-color: #bfdbfe;
+    figcaption {
+      margin-top: 12px;
 
-  transform: translateY(-2px);
+      color: var(--muted);
 
-  box-shadow: 0 8px 22px rgba(15,23,42,.06);
-}
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-.number {
-  color: #2563eb;
-}
+      font-size: 0.82rem;
+    }
 
-.card h3 {
-  color: var(--text);
-}
+    .about-text {
+      color: var(--muted);
 
-.card p,
-.detail {
-  color: var(--muted);
-}
+      font-size: 1.08rem;
+      line-height: 1.85;
+    }
 
-.detail {
-  border-color: var(--line);
-}
+    .about-text p + p {
+      margin-top: 18px;
+    }
 
-.chev {
-  color: #64748b;
-}
+    .fact-grid {
+      display: grid;
 
-/* ================= SKILLS ================= */
+      grid-template-columns: repeat(2, 1fr);
 
-.tabs {
-  gap: 8px;
-}
+      gap: 12px;
 
-.tab,
-.skill {
-  background: #ffffff;
+      margin-top: 28px;
+    }
 
-  border: 1px solid var(--line);
+    .fact {
+      border: 1px solid var(--line);
+      border-radius: 12px;
 
-  color: #64748b;
+      padding: 17px;
 
-  border-radius: 7px;
-}
+      background: var(--surface);
+    }
 
-.tab:hover,
-.tab.active,
-.skill:hover,
-.skill:focus,
-.skill.selected {
-  border-color: #93c5fd;
+    .fact strong {
+      display: block;
 
-  background: #eff6ff;
+      color: var(--text);
 
-  color: #2563eb;
-}
+      font-size: 1.15rem;
+    }
 
-.skill-info {
-  border-left: 3px solid #2563eb;
+    .fact span {
+      color: var(--muted);
 
-  background: #eff6ff;
+      font-size: 0.86rem;
+    }
 
-  color: #64748b;
+    /* =========================
+       CARDS
+    ========================== */
 
-  border-radius: 0 7px 7px 0;
-}
+    .card-grid {
+      display: grid;
 
-/* ================= PROJECTS ================= */
+      grid-template-columns: repeat(3, 1fr);
 
-.project {
-  background: #ffffff;
-}
+      gap: 16px;
+    }
 
-.project:nth-child(odd) {
-  border-top-color: var(--line);
-}
+    .card {
+      display: flex;
 
-.type {
-  color: #2563eb;
-}
+      min-height: 100%;
 
-.project h3 {
-  color: #111827;
-}
+      flex-direction: column;
 
-.tag {
-  background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
 
-  border: 1px solid var(--line);
+      padding: 24px;
 
-  color: #64748b;
+      background: rgba(13, 24, 33, 0.75);
+    }
 
-  border-radius: 5px;
-}
+    .card h3 {
+      margin-bottom: 12px;
 
-/* ================= LAB ================= */
+      color: var(--text);
 
-.lab-board {
-  box-shadow: 0 4px 18px rgba(15,23,42,.035);
-}
+      font-size: 1.25rem;
+    }
 
-.badge {
-  border-color: #bfdbfe;
+    .card p {
+      color: var(--muted);
 
-  color: #2563eb;
+      font-size: 0.98rem;
+      line-height: 1.75;
+    }
 
-  background: #eff6ff;
+    .skill-list,
+    .tags {
+      display: flex;
 
-  border-radius: 5px;
-}
+      flex-wrap: wrap;
 
-.node {
-  background: #f8fafc;
+      gap: 8px;
 
-  border-color: var(--line);
+      margin-top: 18px;
 
-  color: #334155;
+      list-style: none;
+    }
 
-  border-radius: 7px;
-}
+    .skill-list li,
+    .tag {
+      border: 1px solid rgba(72, 224, 232, 0.2);
 
-.connector {
-  background: #cbd5e1;
-}
+      border-radius: 999px;
 
-/* ================= CHALLENGES ================= */
+      padding: 6px 10px;
 
-.challenge {
-  background: #ffffff;
+      color: var(--cyan);
 
-  border-color: var(--line);
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-  color: var(--text);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
 
-  border-radius: 8px;
-}
+    /* =========================
+       PROJECTS
+    ========================== */
 
-.challenge:hover,
-.challenge.active {
-  border-color: #93c5fd;
+    .project-grid {
+      display: grid;
 
-  background: #eff6ff;
-}
+      grid-template-columns: repeat(2, 1fr);
 
-.challenge small {
-  color: var(--muted);
-}
+      gap: 16px;
+    }
 
-.research-list {
-  border-color: var(--line);
-}
+    .project-card {
+      display: flex;
 
-.research-row {
-  border-color: var(--line);
-}
+      flex-direction: column;
+    }
 
-.research-row button {
-  color: var(--text);
-}
+    .project-number {
+      margin-bottom: 15px;
 
-.research-row .detail {
-  border-color: var(--line);
-}
+      color: var(--orange);
 
-/* ================= TIMELINE ================= */
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-.timeline {
-  border-color: #dbe2ea;
-}
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
 
-.moment:before {
-  background: var(--bg);
+    .project-card .actions {
+      margin-top: auto;
 
-  border-color: #2563eb;
-}
+      padding-top: 25px;
+    }
 
-.moment b {
-  color: #2563eb;
-}
+    /* =========================
+       RESEARCH
+    ========================== */
 
-.moment p {
-  color: var(--muted);
-}
+    .research-box {
+      border: 1px solid var(--line);
 
-/* ================= ACHIEVEMENTS ================= */
+      border-left: 3px solid var(--orange);
 
-.achievement,
-.gh-card {
-  background: #ffffff;
+      border-radius: var(--radius);
 
-  border: 1px solid var(--line);
+      padding: 28px;
 
-  border-radius: 9px;
+      background: var(--surface);
+    }
 
-  box-shadow: 0 2px 10px rgba(15,23,42,.025);
-}
+    .research-box > p {
+      font-size: 1.03rem;
+      line-height: 1.8;
+    }
 
-.achievement:hover,
-.gh-card:hover {
-  border-color: #bfdbfe;
+    .research-list {
+      display: flex;
 
-  transform: translateY(-2px);
+      flex-wrap: wrap;
 
-  box-shadow: 0 8px 20px rgba(15,23,42,.06);
-}
+      gap: 10px;
 
-.achievement svg {
-  color: #2563eb;
-}
+      margin-top: 22px;
 
-.achievement span,
-.gh-card p {
-  color: var(--muted);
-}
+      list-style: none;
+    }
 
-/* ================= SMALL TERMINAL ================= */
+    .research-list li {
+      border: 1px solid var(--line);
 
-.terminal-small {
-  color: #334155;
-}
+      border-radius: 9px;
 
-.terminal-small .command {
-  color: #2563eb !important;
-}
+      padding: 9px 12px;
 
-/* ================= CONTACT ================= */
+      color: var(--text);
 
-.contact-link {
-  background: #ffffff;
+      background: var(--surface-2);
 
-  border: 1px solid var(--line);
+      font-size: 0.9rem;
+    }
 
-  color: #64748b;
+    /* =========================
+       INTERACTIVE TERMINAL
+    ========================== */
 
-  border-radius: 7px;
-}
+    .terminal-section {
+      background: rgba(0, 0, 0, 0.13);
+    }
 
-.contact-link:hover,
-.contact-link:focus-visible {
-  color: #1e293b;
+    .terminal {
+      overflow: hidden;
+    }
 
-  border-color: #93c5fd;
+    .terminal-output {
+      min-height: 300px;
+      max-height: 460px;
 
-  background: #eff6ff;
-}
+      overflow-y: auto;
 
-form {
-  background: #ffffff;
+      padding: 24px;
 
-  border: 1px solid var(--line);
+      color: var(--cyan);
 
-  border-radius: 10px;
+      font-family:
+        "JetBrains Mono",
+        SFMono-Regular,
+        Menlo,
+        monospace;
 
-  box-shadow: 0 4px 18px rgba(15,23,42,.035);
-}
+      font-size: 0.92rem;
 
-label {
-  color: #475569;
-}
+      line-height: 1.75;
 
-input,
-textarea {
-  background: #ffffff;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
 
-  border: 1px solid #cbd5e1;
+    .terminal-line {
+      margin-bottom: 9px;
+    }
 
-  color: #111827;
+    .terminal-line.command {
+      color: var(--orange);
+    }
 
-  border-radius: 6px;
-}
+    .terminal-line.system {
+      color: var(--green);
+    }
 
-input:focus,
-textarea:focus {
-  border-color: #2563eb;
+    .terminal-line.error {
+      color: var(--danger);
+    }
 
-  box-shadow: 0 0 0 3px rgba(37,99,235,.08);
-}
+    .terminal-form {
+      display: flex;
 
-.form-status {
-  color: #2563eb;
-}
+      gap: 10px;
 
-/* ================= FOOTER ================= */
+      border-top: 1px solid var(--line);
 
-footer {
-  background: #ffffff;
+      padding: 17px 24px;
+    }
 
-  border-color: var(--line);
+    .terminal-form label {
+      flex: 0 0 auto;
 
-  color: #64748b;
-}
+      color: var(--orange);
 
-.foot strong {
-  color: #111827;
-}
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-.footer-links a:hover {
-  color: #2563eb;
-}
+      font-size: 0.9rem;
+    }
 
-/* ================= ACCESSIBILITY ================= */
+    .terminal-input {
+      width: 100%;
+      min-width: 0;
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid #2563eb;
+      border: 0;
 
-  outline-offset: 3px;
-}
+      outline: 0;
 
-/* ================= ANIMATION ================= */
+      background: transparent;
 
-.reveal {
-  transform: translateY(10px);
+      color: var(--text);
 
-  transition:
-    opacity .45s ease,
-    transform .45s ease;
-}
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-.project,
-.card,
-.achievement,
-.gh-card,
-.btn,
-.contact-link {
-  transition:
-    transform .2s ease,
-    border-color .2s ease,
-    box-shadow .2s ease,
-    background .2s ease;
-}
+      font-size: 0.92rem;
+    }
 
-/* ================= RESPONSIVE ================= */
+    .terminal-tools {
+      display: flex;
 
-@media (max-width: 900px) {
+      flex-wrap: wrap;
 
-  .nav-inner {
-    height: 72px;
-  }
+      align-items: center;
 
-  .links {
-    display: none;
-  }
+      gap: 9px;
 
-  .menu-btn {
-    display: block;
-  }
+      padding: 17px 24px;
 
-  .links.open {
-    display: flex;
+      border-top: 1px solid var(--line);
+    }
 
-    position: absolute;
+    .quick-command,
+    .clear-button {
+      border: 1px solid var(--line);
 
-    top: 72px;
-    left: 0;
-    right: 0;
+      border-radius: 7px;
 
-    background: #ffffff;
+      background: transparent;
 
-    border-bottom: 1px solid var(--line);
+      color: var(--muted);
 
-    padding: 20px 24px;
+      cursor: pointer;
 
-    flex-direction: column;
+      padding: 7px 10px;
 
-    gap: 8px;
-  }
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-  .links.open a {
-    padding: 11px 0;
+      font-size: 0.8rem;
+    }
 
-    font-size: 14px;
-  }
+    .quick-command:hover,
+    .clear-button:hover {
+      border-color: var(--cyan);
 
-  .section {
-    padding: 82px 0;
-  }
-}
+      color: var(--cyan);
+    }
 
-/* ================= SMALL MOBILE ================= */
+    .terminal-tip {
+      margin-top: 14px;
 
-@media (max-width: 560px) {
+      color: var(--muted);
 
-  .nav-inner {
-    height: 70px;
-  }
+      font-family:
+        "JetBrains Mono",
+        ui-monospace,
+        monospace;
 
-  .brand {
-    font-size: 15px;
-  }
+      font-size: 0.84rem;
+    }
 
-  .availability {
-    display: none;
-  }
+    /* =========================
+       CONTACT
+    ========================== */
 
-  .mark {
-    font-size: 13px;
+    .contact-links {
+      display: grid;
 
-    padding: 7px 9px;
-  }
+      gap: 10px;
 
-  .section {
-    padding: 70px 0;
-  }
+      margin-top: 24px;
+    }
 
-  .hero h1 {
-    letter-spacing: -.06em;
-  }
+    .contact-links a {
+      display: block;
 
-  .academic,
-  .card,
-  .lab-board,
-  form {
-    border-radius: 8px;
-  }
-}
+      border-bottom: 1px solid var(--line);
 
+      padding: 13px 0;
+
+      color: var(--cyan);
+
+      font-size: 1rem;
+      font-weight: 500;
+
+      overflow-wrap: anywhere;
+    }
+
+    .contact-links a:hover {
+      color: var(--orange);
+    }
+
+    .contact-form {
+      display: grid;
+
+      gap: 15px;
+
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+
+      padding: 26px;
+
+      background: var(--surface);
+    }
+
+    .form-note {
+      color: var(--muted);
+
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    .field {
+      display: grid;
+
+      gap: 7px;
+    }
+
+    .field label {
+      color: var(--muted);
+
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+
+      border: 1px solid var(--line);
+      border-radius: 9px;
+
+      outline: none;
+
+      background: var(--surface-2);
+
+      color: var(--text);
+
+      padding: 13px;
+
+      font-size: 0.95rem;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+    }
+
+    .field input[aria-invalid="true"],
+    .field textarea[aria-invalid="true"] {
+      border-color: var(--danger);
+    }
+
+    .field textarea {
+      min-height: 140px;
+
+      resize: vertical;
+    }
+
+    .form-status {
+      min-height: 24px;
+
+      color: var(--green);
+
+      font-size: 0.9rem;
+    }
+
+    .form-status.error {
+      color: var(--danger);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      border-top: 1px solid var(--line);
+
+      padding: 34px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 16px;
+
+      color: var(--muted);
+
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-grid {
+        gap: 40px;
+      }
+
+      .portrait-wrap {
+        order: 2;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .nav-inner {
+        min-height: 64px;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+
+        top: 64px;
+        right: 14px;
+        left: 14px;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        border: 1px solid var(--line);
+        border-radius: 12px;
+
+        padding: 8px;
+
+        background: #0b151d;
+
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 13px;
+
+        font-size: 0.95rem;
+      }
+
+      .nav-links a.active::after {
+        right: auto;
+
+        bottom: 7px;
+        left: 13px;
+
+        width: 3px;
+        height: 22px;
+      }
+
+      .hero {
+        padding: 76px 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.2rem, 19vw, 6rem);
+      }
+
+      .hero-copy {
+        font-size: 1.05rem;
+      }
+
+      .status-line {
+        font-size: 0.82rem;
+      }
+
+      .section-heading p {
+        font-size: 1rem;
+      }
+
+      .card-grid,
+      .project-grid,
+      .fact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .skill-list li,
+      .tag {
+        font-size: 0.78rem;
+      }
+
+      .terminal-form {
+        align-items: flex-start;
+
+        padding: 15px;
+      }
+
+      .terminal-form label {
+        padding-top: 1px;
+
+        font-size: 0.78rem;
+      }
+
+      .terminal-input {
+        font-size: 0.85rem;
+      }
+
+      .terminal-output {
+        padding: 18px;
+
+        font-size: 0.84rem;
+      }
+
+      .terminal-tools {
+        padding: 15px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 3.1rem;
+      }
+
+      .eyebrow {
+        font-size: 0.74rem;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .actions {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
   </style>
-
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
 </head>
 
-<body>
+<body id="home">
 
-  <div class="signal-layer" aria-hidden="true">
-    <span class="signal-line one"></span>
-    <span class="signal-line two"></span>
-  </div>
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
-  <header class="nav" id="site-nav">
-    <div class="shell nav-inner">
+  <header class="site-nav">
+    <div class="container nav-inner">
 
-      <a href="#home" class="brand" aria-label="Ravi Yadav home">
-        <span class="mark">ra0X</span>
-        <span class="availability">
-          <span class="dot">●</span> building, learning &amp; researching
+      <a
+        class="brand"
+        href="#home"
+        aria-label="Return to Ravi Yadav homepage"
+      >
+        <span class="brand-mark">rX</span>
+
+        <span>
+          ra0X
+          <small>Ravi Yadav</small>
         </span>
       </a>
 
       <button
-        class="menu-btn"
-        id="menu-button"
+        class="menu-button"
+        id="menuButton"
         type="button"
         aria-label="Open navigation menu"
-        aria-expanded="false">
-        <i data-lucide="menu" aria-hidden="true"></i>
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        ☰
       </button>
 
-      <nav class="links" id="nav-links" aria-label="Primary navigation">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#research">Research</a>
-        <a href="#terminal">Terminal</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="navLinks">
 
+          <li>
+            <a
+              class="nav-link active"
+              href="#home"
+              aria-current="page"
+            >
+              Home
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="#about">
+              About
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="#skills">
+              Skills
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="#projects">
+              Projects
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="#research">
+              Research
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="#terminal">
+              Terminal
+            </a>
+          </li>
+
+          <li>
+            <a class="nav-link" href="#contact">
+              Contact
+            </a>
+          </li>
+
+        </ul>
+      </nav>
     </div>
   </header>
 
   <main>
 
-    <!-- HERO -->
-    <section class="shell hero" id="home">
-      <div class="hero-grid">
+    <!-- =========================
+         HERO
+    ========================== -->
 
-        <div class="reveal">
+    <section
+      class="hero section"
+      aria-labelledby="hero-title"
+    >
+      <div class="container hero-grid">
 
-          <p class="eyebrow">
-            /home/ravi/ra0X-lab
-          </p>
+        <div>
+          <div class="eyebrow">
+            Cybersecurity / Computer Engineering
+          </div>
 
-          <h1>Hi, I’m Ravi.</h1>
-
-          <h2>
-            Computer Engineering Student |
-            Cybersecurity Learner |
-            Security Researcher
-          </h2>
+          <h1 id="hero-title">
+            Ravi Yadav
+            <span>alias: ra0x</span>
+          </h1>
 
           <p class="hero-copy">
-            I’m Ravi Yadav from Nepal — building, learning, and researching
-            through cybersecurity tools, controlled labs, CTF challenges,
-            and better questions.
+            Computer Engineering student building practical security skills
+            through labs, projects, CTFs and research.
+          </p>
+
+          <p class="status-line">
+            ● Learning in public · documenting the process
           </p>
 
           <div class="actions">
-
-            <a class="btn primary" href="#projects">
-              View My Work
+            <a
+              class="button"
+              href="#projects"
+            >
+              Explore projects
             </a>
 
             <a
-              class="btn"
-              href="https://github.com/raviydvg75"
-              target="_blank"
-              rel="noopener noreferrer">
-
-              Explore My GitHub
-
-              <i
-                data-lucide="arrow-up-right"
-                aria-hidden="true"
-                style="width:14px;height:14px">
-              </i>
-
+              class="button secondary"
+              href="#contact"
+            >
+              Get in touch
             </a>
-
           </div>
-
-          <p class="meta">
-            4th semester · Pokhara University · Nepal · alias: ra0X
-          </p>
-
-        </div>
-
-        <aside
-          class="terminal reveal"
-          aria-label="Ravi Yadav cyber lab profile terminal">
-
-          <div class="term-top">
-            <span>ravi@ra0X-lab:~</span>
-            <span>profile.txt</span>
-          </div>
-
-          <div class="term-code">
-            <span class="command">$ whoami</span>
-            <span class="prompt">ravi@ra0X-lab</span>
-
-            <span class="command">$ focus</span>
-            cybersecurity
-
-            <span class="command">$ status</span>
-            <span id="terminal-status">
-              building • learning • researching
-            </span>
-
-            <span class="cursor" aria-hidden="true"></span>
-          </div>
-
-          <div
-            class="mode-controls"
-            role="group"
-            aria-label="Portfolio learning mode">
-
-            <button
-              class="mode-btn active"
-              type="button"
-              data-mode="observe"
-              aria-pressed="true">
-              observe
-            </button>
-
-            <button
-              class="mode-btn"
-              type="button"
-              data-mode="analyze"
-              aria-pressed="false">
-              analyze
-            </button>
-
-            <button
-              class="mode-btn"
-              type="button"
-              data-mode="build"
-              aria-pressed="false">
-              build
-            </button>
-
-          </div>
-
-          <p
-            class="mode-status"
-            id="mode-status"
-            aria-live="polite">
-            mode: observe · collecting notes from systems, labs,
-            and learning paths.
-          </p>
-
-          <div class="status-strip">
-            <span>lab_mode: controlled</span>
-            <span>focus: cybersecurity</span>
-            <span>alias: ra0X</span>
-          </div>
-
-        </aside>
-
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-
-      <div class="shell about-grid">
-
-        <div class="reveal">
-
-          <p class="eyebrow">01 / identity</p>
-
-          <h2 class="section-title">
-            About Me
-          </h2>
-
-          <p class="lead">
-            I’m Ravi Yadav, a Computer Engineering student at
-            Cosmos College of Management &amp; Technology under
-            Pokhara University. My main interest is cybersecurity,
-            especially understanding how systems can be attacked,
-            monitored, and secured.
-          </p>
-
-          <br>
-
-          <p class="lead">
-            I learn through hands-on experimentation — from Linux
-            and networking to security tools, CTF challenges, and
-            small security projects. My long-term direction is toward
-            cybersecurity and cloud security while I keep strengthening
-            my foundations in systems, networking, labs, and security research.
-          </p>
-
-        </div>
-
-        <aside class="academic reveal">
-
-          <span class="eyebrow">
-            academic record
-          </span>
-
-          <strong>
-            Bachelor of Computer Engineering
-          </strong>
-
-          <p>Pokhara University</p>
-
-          <p>
-            Cosmos College of Management &amp; Technology
-          </p>
-
-          <hr style="border-color:var(--line);margin:20px 0">
-
-          <p>Expected graduation: 2028</p>
-
-          <p>
-            Current CGPA:
-            <b class="gpa-current">3.74 / 4.00</b>
-          </p>
-
-          <p>
-            Graduation target:
-            <b class="gpa-target">3.7+ / 4.00</b>
-          </p>
-
-          <p>100% Scholarship</p>
-
-        </aside>
-
-      </div>
-
-      <div
-        class="shell stats reveal"
-        aria-label="Academic facts">
-
-        <div class="stat">
-          <b>3.74</b>
-          <span>current CGPA / 4.00</span>
-        </div>
-
-        <div class="stat">
-          <b>3.7+</b>
-          <span>target at graduation / 4.00</span>
-        </div>
-
-        <div class="stat">
-          <b>100%</b>
-          <span>scholarship</span>
-        </div>
-
-        <div class="stat">
-          <b>2028</b>
-          <span>expected graduation</span>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- DIRECTION -->
-    <section class="section" id="focus">
-
-      <div class="shell">
-
-        <div class="reveal">
-
-          <p class="eyebrow">02 / direction</p>
-
-          <h2 class="section-title">
-            What I’m Working Toward
-          </h2>
-
-        </div>
-
-        <div class="grid3 reveal">
-
-          <article class="card">
-
-            <button
-              class="expand"
-              type="button"
-              aria-expanded="false">
-
-              <span>
-                <span class="number">01</span>
-                <h3>CYBERSECURITY</h3>
-              </span>
-
-              <span class="chev">⌄</span>
-
-            </button>
-
-            <p>
-              Building stronger foundations through hands-on learning.
-            </p>
-
-            <div class="detail">
-              Network security · Linux · Security monitoring ·
-              Vulnerability assessment · Threat detection
-            </div>
-
-          </article>
-
-          <article class="card">
-
-            <button
-              class="expand"
-              type="button"
-              aria-expanded="false">
-
-              <span>
-                <span class="number">02</span>
-                <h3>OFFENSIVE SECURITY</h3>
-              </span>
-
-              <span class="chev">⌄</span>
-
-            </button>
-
-            <p>
-              Exploring controlled methods for understanding attack surfaces.
-            </p>
-
-            <div class="detail">
-              Reconnaissance · Web security · Network security ·
-              Burp Suite · Nmap · Metasploit · CTFs
-            </div>
-
-          </article>
-
-          <article class="card">
-
-            <button
-              class="expand"
-              type="button"
-              aria-expanded="false">
-
-              <span>
-                <span class="number">03</span>
-                <h3>CLOUD SECURITY</h3>
-              </span>
-
-              <span class="chev">⌄</span>
-
-            </button>
-
-            <p>
-              A long-term direction in secure infrastructure and architecture.
-            </p>
-
-            <div class="detail">
-              Cloud infrastructure · Identity and access management ·
-              Secure architecture · Cloud-native security
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-
-      <div class="shell reveal">
-
-        <p class="eyebrow">03 / toolkit</p>
-
-        <h2 class="section-title">
-          Technical Skills
-        </h2>
-
-        <div
-          class="tabs"
-          role="tablist"
-          aria-label="Skill categories">
-
-          <button
-            class="tab active"
-            type="button"
-            role="tab"
-            aria-selected="true"
-            data-tab="security">
-            SECURITY
-          </button>
-
-          <button
-            class="tab"
-            type="button"
-            role="tab"
-            aria-selected="false"
-            data-tab="development">
-            DEVELOPMENT
-          </button>
-
-          <button
-            class="tab"
-            type="button"
-            role="tab"
-            aria-selected="false"
-            data-tab="areas">
-            SECURITY AREAS
-          </button>
-
-        </div>
-
-        <div class="skill-panel active" id="security">
-
-          <div class="chips">
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Explored for reconnaissance and service enumeration in learning labs.">
-              Nmap
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Used for packet inspection and protocol analysis in lab environments.">
-              Wireshark
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Used to explore web requests, testing workflows, and security concepts.">
-              Burp Suite
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Explored in controlled lab environments for understanding exploitation workflows.">
-              Metasploit
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Used for log exploration, event investigation, and detection lab work.">
-              Splunk
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Daily learning environment for systems, networking, and security tools.">
-              Linux
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="skill-panel" id="development">
-
-          <div class="chips">
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Used for coursework and desktop application development.">
-              Java
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Used for security experiments, lightweight tools, and scripting practice.">
-              Python
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Used in data-backed student software projects.">
-              SQL
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Used to track code changes and maintain learning projects.">
-              Git
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Primary editor for programming, scripts, and notes.">
-              VS Code
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="skill-panel" id="areas">
-
-          <div class="chips">
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Exploring defensive controls, protocols, services, and traffic analysis.">
-              Network Security
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Practicing controlled web testing through labs and CTF-style exercises.">
-              Web Security
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="Learning logging, alerting, and triage concepts.">
-              Security Monitoring
-            </button>
-
-            <button
-              class="skill"
-              type="button"
-              data-detail="A continuing long-term security learning direction.">
-              Cloud Security
-            </button>
-
-          </div>
-
         </div>
 
         <div
-          class="skill-info"
-          id="skill-info"
-          aria-live="polite">
+          class="preview-terminal"
+          aria-label="Simulated terminal preview"
+        >
+          <div class="terminal-bar">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
 
-          Select a skill to view its practical learning context.
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- INTERACTIVE TERMINAL -->
-    <section class="section" id="terminal">
-
-      <div class="shell reveal">
-
-        <p class="eyebrow">
-          04 / explore the lab
-        </p>
-
-        <h2 class="section-title">
-          Interactive Terminal
-        </h2>
-
-        <div
-          class="interactive-terminal"
-          aria-label="Simulated interactive portfolio terminal">
-
-          <div class="term-top">
-            <span>visitor@ra0x-lab:~</span>
-            <span class="terminal-badge">
-              interactive portfolio terminal · simulated environment
+            <span class="terminal-label">
+              simulated environment
             </span>
           </div>
 
-          <div
-            class="terminal-output"
-            id="terminal-output"
-            role="log"
-            aria-live="polite"
-            aria-label="Terminal history">
-          </div>
-
-          <form
-            class="terminal-input-row"
-            id="terminal-form">
-
-            <label
-              class="sr-only"
-              for="terminal-input">
-              Terminal command
-            </label>
-
-            <span
-              class="terminal-prompt"
-              aria-hidden="true">
-              visitor@ra0x-lab:~$
-            </span>
-
-            <input
-              class="terminal-input"
-              id="terminal-input"
-              type="text"
-              autocomplete="off"
-              autocapitalize="off"
-              spellcheck="false">
-
-            <span
-              class="terminal-cursor"
-              aria-hidden="true">
-            </span>
-
-          </form>
-
-          <div class="terminal-actions">
-
-            <div class="quick-commands">
-
-              <button
-                class="quick-command"
-                type="button"
-                data-terminal-command="help">
-                help
-              </button>
-
-              <button
-                class="quick-command"
-                type="button"
-                data-terminal-command="projects">
-                projects
-              </button>
-
-              <button
-                class="quick-command"
-                type="button"
-                data-terminal-command="skills">
-                skills
-              </button>
-
+          <div class="preview-body">
+            <div>
+              <span class="prompt">
+                visitor@ra0x-lab:~$
+              </span>
+              whoami
             </div>
 
-            <button
-              class="terminal-clear"
-              id="terminal-clear"
-              type="button">
-              Clear
-            </button>
+            <div class="preview-output">
+              ra0x
+            </div>
 
+            <div class="preview-output">
+              type "help" to explore the portfolio
+            </div>
           </div>
-
-          <p class="terminal-tip">
-            Try <span class="mono">help</span>
-            to explore the safe portfolio commands.
-          </p>
-
         </div>
 
       </div>
-
     </section>
 
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
+    <!-- =========================
+         ABOUT
+    ========================== -->
 
-      <div class="shell">
+    <section
+      class="section"
+      id="about"
+      aria-labelledby="about-title"
+    >
+      <div class="container about-grid">
 
-        <div class="reveal">
+        <figure class="portrait-wrap">
 
-          <p class="eyebrow">
-            04 / workbench
-          </p>
+          <!--
+            Put your image here:
+            /images/portrait.jpg
 
-          <h2 class="section-title">
-            Selected Projects &amp; Labs
-          </h2>
+            Recommended GitHub Pages structure:
+            index.html
+            images/
+              portrait.jpg
+          -->
 
-        </div>
+          <img
+            class="portrait"
+            src="images/portrait.jpg"
+            alt="Portrait of Ravi Yadav"
+            width="740"
+            height="925"
+            loading="lazy"
+            decoding="async"
+            onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 500%27%3E%3Crect width=%27400%27 height=%27500%27 fill=%27%23111f2a%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 fill=%27%2348e0e8%27 font-family=%27monospace%27 font-size=%2724%27 text-anchor=%27middle%27%3Era0X%3C/text%3E%3C/svg%3E';"
+          />
 
-        <div class="projects reveal">
+          <figcaption>
+            identity: Ravi Yadav / alias: ra0X
+          </figcaption>
 
-          <article class="card project">
+        </figure>
 
-            <span class="type">
-              student software project
-            </span>
+        <div>
 
-            <h3>Mero Pasal</h3>
+          <div class="section-heading">
+            <div class="eyebrow">
+              About
+            </div>
+
+            <h2 id="about-title">
+              The Person Behind ra0X
+            </h2>
+          </div>
+
+          <div class="about-text">
 
             <p>
-              A desktop-based Java application for shop inventory
-              management and sales.
+              Ravi studies Computer Engineering at Cosmos College under
+              Pokhara University in Nepal.
+            </p>
+
+            <p>
+              He is building practical foundations in security operations,
+              penetration testing and cloud security through labs, projects,
+              CTFs, research and documentation.
+            </p>
+
+          </div>
+
+          <div class="fact-grid">
+
+            <div class="fact">
+              <strong>3.74</strong>
+              <span>Current CGPA</span>
+            </div>
+
+            <div class="fact">
+              <strong>2028</strong>
+              <span>
+                Expected graduation · target CGPA 3.7+
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         SKILLS
+    ========================== -->
+
+    <section
+      class="section"
+      id="skills"
+      aria-labelledby="skills-title"
+    >
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">
+            Capabilities
+          </div>
+
+          <h2 id="skills-title">
+            Tools, systems and areas of focus.
+          </h2>
+
+          <p>
+            Exploring through labs, projects, CTFs and research.
+          </p>
+        </div>
+
+        <div class="card-grid">
+
+          <article class="card">
+            <h3>Security</h3>
+
+            <ul class="skill-list">
+              <li>Linux</li>
+              <li>Networking</li>
+              <li>Nmap</li>
+              <li>Wireshark</li>
+              <li>Burp Suite</li>
+              <li>Metasploit</li>
+              <li>Splunk</li>
+              <li>Sysmon</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Development</h3>
+
+            <ul class="skill-list">
+              <li>Python</li>
+              <li>Java</li>
+              <li>SQL</li>
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>VS Code</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Security areas</h3>
+
+            <ul class="skill-list">
+              <li>Network Security</li>
+              <li>Web Security</li>
+              <li>SOC Monitoring</li>
+              <li>Threat Detection</li>
+              <li>Digital Forensics</li>
+              <li>Cloud Security</li>
+              <li>OSINT</li>
+              <li>Security Research</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <section
+      class="section"
+      id="projects"
+      aria-labelledby="projects-title"
+    >
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">
+            Selected work
+          </div>
+
+          <h2 id="projects-title">
+            Projects from the lab.
+          </h2>
+        </div>
+
+        <div class="project-grid">
+
+          <!-- Project 1 -->
+
+          <article class="card project-card">
+
+            <div class="project-number">
+              01 / APPLICATION
+            </div>
+
+            <h3>
+              Mero Pasal
+            </h3>
+
+            <p>
+              Java desktop inventory and sales application.
             </p>
 
             <div class="tags">
-              <span class="tag">Java</span>
               <span class="tag">Java Swing</span>
               <span class="tag">SQL</span>
+              <span class="tag">Inventory</span>
+              <span class="tag">Billing</span>
+              <span class="tag">Payment / QR</span>
             </div>
 
-            <a
-              class="btn"
-              style="margin-top:18px"
-              href="https://github.com/raviydvg75/ShopInventory"
-              target="_blank"
-              rel="noopener noreferrer">
+            <div class="actions">
 
-              View Mero Pasal on GitHub
+              <a
+                class="button secondary"
+                href="https://github.com/raviydvg75/ShopInventory"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Mero Pasal project on GitHub"
+              >
+                View on GitHub
+              </a>
 
-              <i
-                data-lucide="arrow-up-right"
-                aria-hidden="true"
-                style="width:14px;height:14px">
-              </i>
-
-            </a>
-
-            <button
-              class="expand"
-              type="button"
-              aria-expanded="false"
-              style="margin-top:18px">
-
-              <span class="mono" style="font-size:11px">
-                WHAT I WORKED ON
-              </span>
-
-              <span class="chev">⌄</span>
-
-            </button>
-
-            <div class="detail">
-              Login system · Dashboard · Inventory management ·
-              Billing · Dynamic payment/QR functionality
             </div>
 
           </article>
 
-          <article class="card project">
+          <!-- Project 2 -->
 
-            <span class="type">
-              security tool / experiment
-            </span>
+          <article class="card project-card">
+
+            <div class="project-number">
+              02 / NETWORKING
+            </div>
 
             <h3>
               Python Network Port Scanner
             </h3>
 
             <p>
-              A lightweight Python-based network scanning tool
-              created to understand port discovery and basic
-              service enumeration.
+              Port discovery and basic service enumeration.
             </p>
 
             <div class="tags">
               <span class="tag">Python</span>
               <span class="tag">Networking</span>
-            </div>
-
-            <button
-              class="expand"
-              type="button"
-              aria-expanded="false"
-              style="margin-top:18px">
-
-              <span class="mono" style="font-size:11px">
-                WHAT I WORKED ON
-              </span>
-
-              <span class="chev">⌄</span>
-
-            </button>
-
-            <div class="detail">
-              Port scanning · Basic service detection ·
-              Terminal-based interface
+              <span class="tag">Terminal</span>
+              <span class="tag">Service detection</span>
             </div>
 
           </article>
 
-          <article class="card project">
+          <!-- Project 3 -->
 
-            <span class="type">
-              defensive security lab
-            </span>
+          <article class="card project-card">
+
+            <div class="project-number">
+              03 / DETECTION
+            </div>
 
             <h3>
               Splunk FTP Brute-Force Detection Lab
             </h3>
 
             <p>
-              A hands-on defensive lab simulating FTP brute-force
-              activity and analyzing resulting logs using Splunk.
+              Simulated attack and log investigation.
             </p>
 
             <div class="tags">
               <span class="tag">Kali Linux</span>
               <span class="tag">Splunk</span>
-              <span class="tag">Linux</span>
-            </div>
-
-            <button
-              class="expand"
-              type="button"
-              aria-expanded="false"
-              style="margin-top:18px">
-
-              <span class="mono" style="font-size:11px">
-                WHAT I WORKED ON
-              </span>
-
-              <span class="chev">⌄</span>
-
-            </button>
-
-            <div class="detail">
-              Attack simulation · Log collection · Source IP analysis ·
-              Detection · Investigation
+              <span class="tag">Detection</span>
+              <span class="tag">Dashboards</span>
             </div>
 
           </article>
 
-          <article class="card project">
+          <!-- Project 4 -->
 
-            <span class="type">
-              security monitoring lab
-            </span>
+          <article class="card project-card">
+
+            <div class="project-number">
+              04 / MONITORING
+            </div>
 
             <h3>
               Windows Security Monitoring Lab
             </h3>
 
             <p>
-              A practical monitoring environment using Windows
-              telemetry and Splunk/Sysmon to explore endpoint
-              event collection and analysis.
+              Endpoint telemetry and event analysis.
             </p>
 
             <div class="tags">
               <span class="tag">Windows</span>
               <span class="tag">Sysmon</span>
               <span class="tag">Splunk</span>
+              <span class="tag">Universal Forwarder</span>
             </div>
 
-            <button
-              class="expand"
-              type="button"
-              aria-expanded="false"
-              style="margin-top:18px">
+          </article>
 
-              <span class="mono" style="font-size:11px">
-                LEARNING CONTEXT
-              </span>
+          <!-- Project 5 -->
 
-              <span class="chev">⌄</span>
+          <article class="card project-card">
 
-            </button>
+            <div class="project-number">
+              05 / PRACTICE
+            </div>
 
-            <div class="detail">
-              A controlled learning environment for understanding
-              endpoint telemetry, collection pipelines, and
-              investigation workflows.
+            <h3>
+              CTF &amp; Security Research
+            </h3>
+
+            <p>
+              Controlled practice across web, crypto, forensics,
+              steganography, reversing and networking.
+            </p>
+
+            <div class="actions">
+
+              <a
+                class="button secondary"
+                href="https://github.com/raviydvg75/CyberSecurity-"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Explore Ravi's cybersecurity repository on GitHub"
+              >
+                Explore repository
+              </a>
+
             </div>
 
           </article>
 
         </div>
-
       </div>
-
     </section>
 
-    <!-- LAB -->
-    <section class="section" id="lab">
+    <!-- =========================
+         RESEARCH
+    ========================== -->
 
-      <div class="shell reveal">
+    <section
+      class="section"
+      id="research"
+      aria-labelledby="research-title"
+    >
+      <div class="container">
 
-        <p class="eyebrow">
-          05 / controlled environment
-        </p>
+        <div class="section-heading">
 
-        <h2 class="section-title">
-          Inside My Cyber Lab
-        </h2>
+          <div class="eyebrow">
+            Research direction
+          </div>
 
-        <div class="lab-board">
+          <h2 id="research-title">
+            Questions worth investigating.
+          </h2>
 
-          <span class="badge">
-            ra0X lab mode: controlled environment
-          </span>
+        </div>
+
+        <div class="research-box">
+
+          <p class="muted">
+            Ongoing research fellowship and project work exploring the
+            relationship between intelligent systems and practical security.
+          </p>
+
+          <ul class="research-list">
+            <li>AI and cybersecurity</li>
+            <li>Future cyber threats</li>
+            <li>AI-assisted cybersecurity</li>
+            <li>Threat detection</li>
+            <li>Security automation</li>
+            <li>Cloud security</li>
+            <li>OSINT</li>
+            <li>Defensive security</li>
+            <li>Human-AI collaboration</li>
+          </ul>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         TERMINAL
+    ========================== -->
+
+    <section
+      class="section terminal-section"
+      id="terminal"
+      aria-labelledby="terminal-title"
+    >
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="eyebrow">
+            Interactive interface
+          </div>
+
+          <h2 id="terminal-title">
+            Explore the portfolio from the terminal.
+          </h2>
+
+          <p>
+            This is a simulated portfolio terminal. It does not access a real
+            shell, filesystem or network.
+          </p>
+
+        </div>
+
+        <div class="terminal">
+
+          <div class="terminal-bar">
+
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+
+            <span class="terminal-label">
+              interactive portfolio terminal · simulated environment
+            </span>
+
+          </div>
 
           <div
-            class="lab-flow"
-            aria-label="Cyber lab architecture">
-
-            <div class="node">
-              Kali / Parrot OS
-            </div>
-
-            <div class="connector"></div>
-
-            <div class="node">
-              Security Tools
-            </div>
-
-            <div class="connector"></div>
-
-            <div class="node">
-              Target Machines
-            </div>
-
-            <div class="connector"></div>
-
-            <div class="node">
-              Logs / Telemetry
-            </div>
-
-            <div class="connector"></div>
-
-            <div class="node">
-              Splunk / Analysis
-            </div>
-
-          </div>
-
-          <p class="lead" style="font-size:1rem">
-
-            These are learning and lab environments built to
-            understand systems, security tooling, logging,
-            attack paths, and defensive investigation without
-            treating practice work as production experience.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- RESEARCH -->
-    <section class="section" id="research">
-
-      <div class="shell">
-
-        <div class="reveal">
-
-          <p class="eyebrow">
-            06 / research practice
-          </p>
-
-          <h2 class="section-title">
-            Break. Analyze. Understand.
-          </h2>
-
-          <p class="lead">
-
-            I use CTFs and security labs to move beyond theory.
-            They give me a controlled environment to understand
-            vulnerabilities, analyze attack paths, and practice
-            solving unfamiliar problems.
-
-          </p>
-
-        </div>
-
-        <div
-          class="challenge-board reveal"
-          style="margin-top:28px">
-
-          <button
-            class="challenge"
-            type="button"
-            data-challenge="Explore how inputs, sessions, and application behavior shape web attack surfaces.">
-
-            WEB
-            <small>practice area</small>
-
-          </button>
-
-          <button
-            class="challenge"
-            type="button"
-            data-challenge="Practice reasoning about encoding, ciphers, and cryptographic implementation details.">
-
-            CRYPTO
-            <small>practice area</small>
-
-          </button>
-
-          <button
-            class="challenge"
-            type="button"
-            data-challenge="Explore files, artifacts, metadata, and evidence-oriented analysis.">
-
-            FORENSICS
-            <small>practice area</small>
-
-          </button>
-
-          <button
-            class="challenge"
-            type="button"
-            data-challenge="Practice finding concealed information in files and media.">
-
-            STEGANOGRAPHY
-            <small>practice area</small>
-
-          </button>
-
-          <button
-            class="challenge"
-            type="button"
-            data-challenge="Learn how programs behave by examining logic and binaries in controlled exercises.">
-
-            REVERSE ENGINEERING
-            <small>practice area</small>
-
-          </button>
-
-          <button
-            class="challenge"
-            type="button"
-            data-challenge="Explore protocols, services, traffic, and network-facing systems.">
-
-            NETWORKING
-            <small>practice area</small>
-
-          </button>
-
-        </div>
-
-        <div
-          class="terminal-small reveal"
-          id="challenge-detail"
-          style="margin-top:14px"
-          aria-live="polite">
-
-          <span class="command">
-            $ challenge selected
-          </span>
-
-          <br>
-
-          Choose a practice area.
-
-          <br><br>
-
-          <span class="command">
-            $ workflow
-          </span>
-
-          <br>
-
-          observe → test → document
-
-          <br><br>
-
-          <span style="color:var(--green)">
-            controlled environment
-          </span>
-
-        </div>
-
-        <div
-          style="margin-top:82px"
-          class="reveal">
-
-          <p class="eyebrow">
-            07 / technical interests
-          </p>
-
-          <h2 class="section-title">
-            Research &amp; Technical Interests
-          </h2>
-
-          <p class="lead">
-
-            I’m currently participating in a research fellowship/project
-            environment involving cybersecurity and AI topics. I’m
-            especially interested in AI and cybersecurity, future threats,
-            AI-assisted security, threat detection, security automation,
-            cloud security, OSINT, defensive security, and human-AI
-            collaboration.
-
-          </p>
-
-        </div>
-
-        <div
-          class="research-list reveal"
-          style="margin-top:28px">
-
-          <div class="research-row">
-
-            <button type="button" aria-expanded="false">
-              AI and cybersecurity
-              <span>+</span>
+            class="terminal-output"
+            id="terminalOutput"
+            role="log"
+            aria-live="polite"
+            aria-label="Terminal output"
+          ></div>
+
+          <form
+            class="terminal-form"
+            id="terminalForm"
+          >
+
+            <label for="terminalInput">
+              visitor@ra0x-lab:~$
+            </label>
+
+            <input
+              class="terminal-input"
+              id="terminalInput"
+              type="text"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Terminal command input"
+            />
+
+          </form>
+
+          <div class="terminal-tools">
+
+            <button
+              class="quick-command"
+              type="button"
+              data-command="whoami"
+            >
+              whoami
             </button>
 
-            <div class="detail">
-
-              Question I’m exploring:
-              how can AI-assisted workflows support defenders
-              while introducing new security considerations?
-
-            </div>
-
-          </div>
-
-          <div class="research-row">
-
-            <button type="button" aria-expanded="false">
-
-              Future cyber threats &amp; threat detection
-
-              <span>+</span>
-
+            <button
+              class="quick-command"
+              type="button"
+              data-command="ls"
+            >
+              ls
             </button>
 
-            <div class="detail">
-
-              Question I’m exploring:
-              how might evolving threat patterns influence
-              practical monitoring and detection work?
-
-            </div>
-
-          </div>
-
-          <div class="research-row">
-
-            <button type="button" aria-expanded="false">
-
-              Security automation &amp; cloud security
-
-              <span>+</span>
-
+            <button
+              class="quick-command"
+              type="button"
+              data-command="skills"
+            >
+              skills
             </button>
 
-            <div class="detail">
+            <button
+              class="quick-command"
+              type="button"
+              data-command="projects"
+            >
+              projects
+            </button>
 
-              Question I’m exploring:
-              where can automation support clear, accountable
-              security operations and cloud architecture?
+            <button
+              class="quick-command"
+              type="button"
+              data-command="help"
+            >
+              help
+            </button>
 
+            <button
+              class="clear-button"
+              type="button"
+              id="clearTerminal"
+              aria-label="Clear terminal output"
+            >
+              Clear
+            </button>
+
+          </div>
+        </div>
+
+        <p class="terminal-tip">
+          Tip: explore projects in the page, or type
+          <span class="cyan">projects</span>
+          here.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+      class="section"
+      id="contact"
+      aria-labelledby="contact-title"
+    >
+      <div class="container contact-grid">
+
+        <div>
+
+          <div class="section-heading">
+
+            <div class="eyebrow">
+              Contact
             </div>
 
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- JOURNEY -->
-    <section class="section" id="journey">
-
-      <div class="shell reveal">
-
-        <p class="eyebrow">
-          08 / progression
-        </p>
-
-        <h2 class="section-title">
-          An Evolving Learning Journey
-        </h2>
-
-        <div class="timeline">
-
-          <div class="moment">
-
-            <b>2024–2025</b>
-
-            <p>
-              Computer Engineering foundations · Programming ·
-              Networking · Linux · Databases
-            </p>
+            <h2 id="contact-title">
+              Start a conversation.
+            </h2>
 
           </div>
 
-          <div class="moment">
-
-            <b>2025–2026</b>
-
-            <p>
-              Cybersecurity exploration · Nmap · Wireshark ·
-              Burp Suite · Metasploit · CTFs · Security labs · Splunk
-            </p>
-
-          </div>
-
-          <div class="moment">
-
-            <b>CURRENT</b>
-
-            <p>
-              Security research · SOC concepts · Threat detection ·
-              Cloud security foundations · AI + cybersecurity
-            </p>
-
-          </div>
-
-          <div class="moment">
-
-            <b>FUTURE</b>
-
-            <p>
-              Cybersecurity · Cloud Security · Security Engineering ·
-              Advanced Security Research
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ACHIEVEMENTS -->
-    <section class="section" id="achievements">
-
-      <div class="shell reveal">
-
-        <p class="eyebrow">
-          09 / foundations
-        </p>
-
-        <h2 class="section-title">
-          A Few Things I’m Building On
-        </h2>
-
-        <div class="achievement-grid">
-
-          <div class="achievement">
-
-            <i data-lucide="award" aria-hidden="true"></i>
-
-            <strong>
-              100% Scholarship
-            </strong>
-
-            <span>
-              Pokhara University
-            </span>
-
-          </div>
-
-          <div class="achievement">
-
-            <i data-lucide="book-open" aria-hidden="true"></i>
-
-            <strong>
-              Current CGPA
-            </strong>
-
-            <span>
-              3.74 / 4.00
-            </span>
-
-          </div>
-
-          <div class="achievement">
-
-            <i data-lucide="target" aria-hidden="true"></i>
-
-            <strong>
-              Graduation target
-            </strong>
-
-            <span>
-              3.7+ / 4.00
-            </span>
-
-          </div>
-
-          <div class="achievement">
-
-            <i data-lucide="graduation-cap" aria-hidden="true"></i>
-
-            <strong>
-              Computer Engineering
-            </strong>
-
-            <span>
-              Expected graduation: 2028
-            </span>
-
-          </div>
-
-          <div class="achievement">
-
-            <i data-lucide="shield" aria-hidden="true"></i>
-
-            <strong>
-              Cybersecurity
-            </strong>
-
-            <span>
-              Hands-on labs + CTF practice
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- GITHUB -->
-    <section class="section" id="github">
-
-      <div class="shell reveal">
-
-        <p class="eyebrow">
-          10 / ra0X public workbench
-        </p>
-
-        <h2 class="section-title">
-          Code, Experiments &amp; Write-ups
-        </h2>
-
-        <p class="lead">
-
-          I use GitHub as ra0X to keep selected projects,
-          experiments, security tools, write-ups, and things
-          I build while learning.
-
-        </p>
-
-        <a
-          class="btn"
-          style="margin:22px 0 28px"
-          href="https://github.com/raviydvg75"
-          target="_blank"
-          rel="noopener noreferrer">
-
-          Explore My GitHub · ra0X
-
-          <i
-            data-lucide="arrow-up-right"
-            aria-hidden="true"
-            style="width:14px;height:14px">
-          </i>
-
-        </a>
-
-        <div class="github-grid">
-
-          <div class="gh-card">
-
-            <span class="type">
-              project
-            </span>
-
-            <b>Mero Pasal</b>
-
-            <p>
-              Java desktop inventory and sales application.
-            </p>
-
-          </div>
-
-          <div class="gh-card">
-
-            <span class="type">
-              experiment
-            </span>
-
-            <b>Port Scanner</b>
-
-            <p>
-              Python networking and service enumeration practice.
-            </p>
-
-          </div>
-
-          <div class="gh-card">
-
-            <span class="type">
-              lab
-            </span>
-
-            <b>Splunk Detection</b>
-
-            <p>
-              FTP brute-force simulation and log analysis.
-            </p>
-
-          </div>
-
-          <div class="gh-card">
-
-            <span class="type">
-              write-up collection
-            </span>
-
-            <b>CTF &amp; Research</b>
-
-            <p>
-              Security challenge notes and experiments.
-            </p>
+          <div class="contact-links">
 
             <a
-              class="btn"
-              style="margin-top:16px"
-              href="https://github.com/raviydvg75/CyberSecurity-"
+              href="mailto:raviydvg75@gmail.com"
+              aria-label="Send email to Ravi Yadav"
+            >
+              email: raviydvg75@gmail.com
+            </a>
+
+            <a
+              href="https://github.com/raviydvg75"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+              aria-label="Open Ravi Yadav GitHub profile"
+            >
+              github.com/raviydvg75
+            </a>
 
-              View CyberSecurity Work
+            <a
+              href="https://www.linkedin.com/in/ravi-yadav-%F0%9F%87%B3%F0%9F%87%B5-a69475412"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Ravi Yadav LinkedIn profile"
+            >
+              LinkedIn profile
+            </a>
 
-              <i
-                data-lucide="arrow-up-right"
-                aria-hidden="true"
-                style="width:14px;height:14px">
-              </i>
-
+            <a
+              href="https://youtube.com/@ctfguy13"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open CTF Guy 13 YouTube channel"
+            >
+              YouTube: CTF Guy 13
             </a>
 
           </div>
 
         </div>
 
-      </div>
-
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-
-      <div class="shell">
-
-        <div class="reveal">
-
-          <p class="eyebrow">
-            11 / contact
-          </p>
-
-          <h2 class="section-title">
-            Let’s Connect
-          </h2>
-
-          <p class="lead">
-
-            Interested in cybersecurity, security research, CTFs,
-            labs, or useful engineering projects? Explore Ravi’s
-            learning work on GitHub, find CTF-related content on
-            YouTube, or prepare an email here.
-
-          </p>
-
-        </div>
-
-        <!-- FIXED CONTACT FORM -->
         <form
-          class="contact-grid contact-form reveal"
-          id="contact-form"
-          style="margin-top:30px">
+          class="contact-form"
+          id="contactForm"
+          novalidate
+        >
 
-          <aside>
+          <p class="form-note">
+            This form currently validates your message locally.
+            It does not send email yet. To contact Ravi directly,
+            use the email address or social links on the left.
+          </p>
 
-            <div class="terminal-small">
+          <div class="field">
 
-              <span class="command">
-                $ contact --open
-              </span>
+            <label for="name">
+              Name
+            </label>
 
-              <br>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+              aria-describedby="nameError"
+            />
 
-              github &nbsp;&nbsp;→ ra0X
-              <br>
-
-              linkedin → Ravi Yadav
-              <br>
-
-              youtube &nbsp;&nbsp;→ CTF Guy 13
-              <br>
-
-              email &nbsp;&nbsp;&nbsp; → raviydvg75@gmail.com
-
-            </div>
-
-            <div class="contact-links">
-
-              <a
-                class="contact-link"
-                href="https://github.com/raviydvg75"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Ravi Yadav's GitHub profile">
-
-                <span>GitHub · ra0X</span>
-
-                <i data-lucide="github" aria-hidden="true"></i>
-
-              </a>
-
-              <a
-                class="contact-link"
-                href="https://www.linkedin.com/in/ravi-yadav-%F0%9F%87%B3%F0%9F%87%B5-a69475412?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Ravi Yadav's LinkedIn profile">
-
-                <span>LinkedIn · Ravi Yadav</span>
-
-                <i data-lucide="linkedin" aria-hidden="true"></i>
-
-              </a>
-
-              <a
-                class="contact-link"
-                href="https://youtube.com/@ctfguy13?si=rzzHuCV60BG3MD3B"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open CTF Guy 13 on YouTube">
-
-                <span>YouTube · CTF Guy 13</span>
-
-                <i data-lucide="youtube" aria-hidden="true"></i>
-
-              </a>
-
-              <a
-                class="contact-link"
-                href="mailto:raviydvg75@gmail.com">
-
-                <span>Email · raviydvg75@gmail.com</span>
-
-                <i data-lucide="mail" aria-hidden="true"></i>
-
-              </a>
-
-            </div>
-
-          </aside>
-
-          <div>
-
-            <p class="email-note">
-
-              Your message is saved for Ravi, then your mail app
-              opens with a prepared draft to
-              <strong>raviydvg75@gmail.com</strong>.
-              Press Send in your mail app to deliver it.
-
-            </p>
-
-            <div class="field">
-
-              <label for="name">
-                NAME
-              </label>
-
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autocomplete="name">
-
-              <p
-                class="error"
-                id="name-error">
-                Please enter your name.
-              </p>
-
-            </div>
-
-            <div class="field">
-
-              <label for="email">
-                EMAIL
-              </label>
-
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autocomplete="email">
-
-              <p
-                class="error"
-                id="email-error">
-                Please enter a valid email address.
-              </p>
-
-            </div>
-
-            <div class="field">
-
-              <label for="message">
-                MESSAGE
-              </label>
-
-              <textarea
-                id="message"
-                name="message">
-              </textarea>
-
-              <p
-                class="error"
-                id="message-error">
-                Please enter a message.
-              </p>
-
-            </div>
-
-            <button
-              class="btn primary"
-              type="submit">
-
-              Save &amp; prepare email
-
-              <i
-                data-lucide="send"
-                aria-hidden="true"
-                style="width:14px;height:14px">
-              </i>
-
-            </button>
-
-            <p
-              class="form-status"
-              id="form-status"
-              role="status">
-            </p>
+            <small
+              id="nameError"
+              class="form-status error"
+              aria-live="polite"
+            ></small>
 
           </div>
+
+          <div class="field">
+
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              aria-describedby="emailError"
+            />
+
+            <small
+              id="emailError"
+              class="form-status error"
+              aria-live="polite"
+            ></small>
+
+          </div>
+
+          <div class="field">
+
+            <label for="message">
+              Message
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              required
+              aria-describedby="messageError"
+            ></textarea>
+
+            <small
+              id="messageError"
+              class="form-status error"
+              aria-live="polite"
+            ></small>
+
+          </div>
+
+          <button
+            class="button"
+            type="submit"
+          >
+            Validate message
+          </button>
+
+          <p
+            class="form-status"
+            id="formStatus"
+            role="status"
+            aria-live="polite"
+          ></p>
 
         </form>
 
       </div>
-
     </section>
 
   </main>
 
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
   <footer>
 
-    <div class="shell foot">
+    <div class="container footer-inner">
 
       <div>
 
-        <strong>
-          Ravi Yadav
-        </strong>
+        <a
+          class="brand"
+          href="#home"
+          aria-label="Return to homepage"
+        >
 
-        <span>
-          Computer Engineering • Cybersecurity • Research
-        </span>
+          <span class="brand-mark">
+            rX
+          </span>
 
-        <br>
+          <span>
+            ra0X
+            <small>
+              learning in public
+            </small>
+          </span>
 
-        <em>
-          Built while learning. Built as ra0X.
-        </em>
+        </a>
 
       </div>
 
@@ -2520,26 +2158,29 @@ textarea:focus-visible {
         <a
           href="https://github.com/raviydvg75"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           GitHub
         </a>
 
         <a
-          href="https://www.linkedin.com/in/ravi-yadav-%F0%9F%87%B3%F0%9F%87%B5-a69475412?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+          href="https://www.linkedin.com/in/ravi-yadav-%F0%9F%87%B3%F0%9F%87%B5-a69475412"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           LinkedIn
         </a>
 
         <a
-          href="https://youtube.com/@ctfguy13?si=rzzHuCV60BG3MD3B"
+          href="https://youtube.com/@ctfguy13"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           YouTube
         </a>
 
-        <a href="mailto:raviydvg75@gmail.com">
-          Email
+        <a href="#home">
+          Back to top ↑
         </a>
 
       </div>
@@ -2548,765 +2189,677 @@ textarea:focus-visible {
 
   </footer>
 
-  <script>
+  <!--
+    JavaScript is deferred so HTML is parsed first.
+  -->
 
-    document.addEventListener("DOMContentLoaded",()=>{
+  <script defer>
+    "use strict";
 
-      lucide.createIcons();
+    /* =========================
+       TERMINAL
+    ========================== */
 
-      /* NAVIGATION */
+    const output =
+      document.getElementById("terminalOutput");
 
-      const nav=document.getElementById("site-nav");
-      const menu=document.getElementById("menu-button");
-      const links=document.getElementById("nav-links");
+    const terminalForm =
+      document.getElementById("terminalForm");
 
-      window.addEventListener(
-        "scroll",
-        ()=>{
-          nav.classList.toggle("scrolled",scrollY>12)
-        },
-        {passive:true}
-      );
+    const terminalInput =
+      document.getElementById("terminalInput");
 
-      menu.addEventListener(
-        "click",
-        ()=>{
-          const open=links.classList.toggle("open");
+    const clearTerminal =
+      document.getElementById("clearTerminal");
 
-          menu.setAttribute(
-            "aria-expanded",
-            String(open)
-          );
+    const commandHistory = [];
 
-          menu.setAttribute(
-            "aria-label",
-            open
-              ? "Close navigation menu"
-              : "Open navigation menu"
-          );
-        }
-      );
+    let historyIndex = -1;
 
-      document.addEventListener(
-        "keydown",
-        e=>{
-          if(e.key==="Escape"){
-            links.classList.remove("open");
-            menu.setAttribute("aria-expanded","false");
-          }
-        }
-      );
+    const projectsOutput = [
+      "01  Mero Pasal — Java desktop inventory and sales application",
+      "    Java Swing · SQL · login · dashboard · inventory · billing · payment/QR",
 
-      links.querySelectorAll("a").forEach(
-        a=>a.addEventListener(
-          "click",
-          ()=>{
-            links.classList.remove("open");
-            menu.setAttribute("aria-expanded","false");
-          }
-        )
-      );
+      "02  Python Network Port Scanner — port discovery and basic service enumeration",
+      "    Python · networking · terminal interface · basic service detection",
 
-      /* ACTIVE NAVIGATION */
+      "03  Splunk FTP Brute-Force Detection Lab — simulated attack and log investigation",
+      "    Kali Linux · Splunk · Linux · source IP analysis · detection · dashboards",
 
-      const sections=document.querySelectorAll(
-        "main section[id]"
-      );
+      "04  Windows Security Monitoring Lab — endpoint telemetry and event analysis",
+      "    Windows · Sysmon · Splunk · Universal Forwarder",
 
-      const navLinks=links.querySelectorAll("a");
+      "05  CTF & Security Research — controlled practice across web, crypto, forensics,",
+      "    steganography, reversing and networking"
+    ];
 
-      const activeObserver=
-        new IntersectionObserver(
-          entries=>{
-            entries.forEach(
-              e=>{
-                if(e.isIntersecting){
-                  navLinks.forEach(
-                    a=>{
-                      a.classList.toggle(
-                        "active",
-                        a.getAttribute("href")==="#"+e.target.id
-                      );
-                    }
-                  );
-                }
-              }
-            );
-          },
-          {
-            rootMargin:"-35% 0px -55%"
-          }
-        );
+    const responses = {
 
-      sections.forEach(
-        s=>activeObserver.observe(s)
-      );
-
-      /* REVEAL */
-
-      const revealObserver=
-        new IntersectionObserver(
-          entries=>{
-            entries.forEach(
-              e=>{
-                if(e.isIntersecting){
-                  e.target.classList.add("show");
-                  revealObserver.unobserve(e.target);
-                }
-              }
-            );
-          },
-          {
-            threshold:.12
-          }
-        );
-
-      document.querySelectorAll(".reveal").forEach(
-        e=>revealObserver.observe(e)
-      );
-
-      /* EXPANDABLE CARDS */
-
-      document.querySelectorAll(".expand").forEach(
-        btn=>{
-          btn.addEventListener(
-            "click",
-            ()=>{
-              const card=btn.closest(".card");
-
-              if(!card)return;
-
-              const open=card.classList.toggle("open");
-
-              btn.setAttribute(
-                "aria-expanded",
-                String(open)
-              );
-            }
-          );
-        }
-      );
-
-      /* RESEARCH ROWS */
-
-      document.querySelectorAll(".research-row button").forEach(
-        btn=>{
-          btn.addEventListener(
-            "click",
-            ()=>{
-              const row=btn.closest(".research-row");
-
-              const open=row.classList.toggle("open");
-
-              btn.setAttribute(
-                "aria-expanded",
-                String(open)
-              );
-            }
-          );
-        }
-      );
-
-      /* SKILL TABS */
-
-      document.querySelectorAll(".tab").forEach(
-        tab=>{
-          tab.addEventListener(
-            "click",
-            ()=>{
-              document.querySelectorAll(".tab").forEach(
-                x=>{
-                  x.classList.remove("active");
-                  x.setAttribute(
-                    "aria-selected",
-                    "false"
-                  );
-                }
-              );
-
-              document.querySelectorAll(".skill-panel").forEach(
-                x=>x.classList.remove("active")
-              );
-
-              tab.classList.add("active");
-
-              tab.setAttribute(
-                "aria-selected",
-                "true"
-              );
-
-              document
-                .getElementById(tab.dataset.tab)
-                .classList.add("active");
-            }
-          );
-        }
-      );
-
-      /* SKILLS */
-
-      document.querySelectorAll(".skill").forEach(
-        skill=>{
-          skill.addEventListener(
-            "click",
-            ()=>{
-              document.querySelectorAll(".skill").forEach(
-                x=>x.classList.remove("selected")
-              );
-
-              skill.classList.add("selected");
-
-              document.getElementById(
-                "skill-info"
-              ).textContent=skill.dataset.detail;
-            }
-          );
-        }
-      );
-
-      /* CHALLENGES */
-
-      document.querySelectorAll(".challenge").forEach(
-        c=>{
-          c.addEventListener(
-            "click",
-            ()=>{
-              document.querySelectorAll(".challenge").forEach(
-                x=>x.classList.remove("active")
-              );
-
-              c.classList.add("active");
-
-              document.getElementById(
-                "challenge-detail"
-              ).innerHTML=
-                '<span class="command">$ challenge selected</span><br>'+
-                c.textContent.trim().replace(
-                  "practice area",
-                  ""
-                )+
-                '<br><br>'+
-                '<span class="command">$ practice area</span><br>'+
-                c.dataset.challenge+
-                '<br><br>'+
-                '<span style="color:var(--green)">observe → test → document · controlled environment</span>';
-            }
-          );
-        }
-      );
-
-      /* HERO MODES */
-
-      const modes={
-
-        observe:{
-          status:
-            "mode: observe · collecting notes from systems, labs, and learning paths.",
-          terminal:
-            "building • learning • researching"
-        },
-
-        analyze:{
-          status:
-            "mode: analyze · reviewing patterns, telemetry, and controlled challenge evidence.",
-          terminal:
-            "analyzing • documenting • learning"
-        },
-
-        build:{
-          status:
-            "mode: build · shaping small tools, labs, write-ups, and stronger foundations.",
-          terminal:
-            "building • testing • researching"
-        }
-
-      };
-
-      document.querySelectorAll(".mode-btn").forEach(
-        button=>{
-          button.addEventListener(
-            "click",
-            ()=>{
-              document.querySelectorAll(".mode-btn").forEach(
-                x=>{
-                  x.classList.remove("active");
-                  x.setAttribute(
-                    "aria-pressed",
-                    "false"
-                  );
-                }
-              );
-
-              button.classList.add("active");
-
-              button.setAttribute(
-                "aria-pressed",
-                "true"
-              );
-
-              document.getElementById(
-                "mode-status"
-              ).textContent=
-                modes[button.dataset.mode].status;
-
-              document.getElementById(
-                "terminal-status"
-              ).textContent=
-                modes[button.dataset.mode].terminal;
-            }
-          );
-        }
-      );
-
-    });
-
-
-    /* TERMINAL */
-
-    const terminalOutput=
-      document.getElementById("terminal-output");
-
-    const terminalForm=
-      document.getElementById("terminal-form");
-
-    const terminalInput=
-      document.getElementById("terminal-input");
-
-    const terminalClear=
-      document.getElementById("terminal-clear");
-
-    const terminalHistory=[];
-
-    let historyIndex=0;
-
-    const terminalCommands={
-
-      whoami:[
+      whoami: [
         "ra0x",
         "Ravi Yadav · Computer Engineering student · cybersecurity learner"
       ],
 
-      ls:[
-        "cybersecurity/  offensive-security/  defensive-security/ development/ networking/ research/ ctf/",
+      ls: [
+        "cybersecurity/  offensive-security/  defensive-security/",
+        "development/  networking/  research/  ctf/",
         "skills: Linux · Networking · Nmap · Wireshark · Burp Suite · Metasploit · Splunk · Sysmon · Python · Java · SQL · Git · OSINT"
       ],
 
-      skills:[
+      skills: [
         "[security] Nmap, Wireshark, Burp Suite, Metasploit, Splunk, Sysmon, Linux, Networking",
         "[development] Python, Java, SQL, Git, GitHub, VS Code",
         "[security-areas] Network Security, Web Security, SOC Monitoring, Threat Detection, Digital Forensics, Cloud Security, OSINT, Security Research",
         "status: exploring through labs, projects, CTFs and research"
       ],
 
-      projects:[
-        "01  Mero Pasal — Java desktop inventory and sales application",
-        "    Java Swing · SQL · login · dashboard · inventory · billing · payment/QR",
-        "02  Python Network Port Scanner — port discovery and basic service enumeration",
-        "    Python · networking · terminal interface · basic service detection",
-        "03  Splunk FTP Brute-Force Detection Lab — simulated attack and log investigation",
-        "    Kali Linux · Splunk · Linux · source IP analysis · detection · dashboards",
-        "04  Windows Security Monitoring Lab — endpoint telemetry and event analysis",
-        "    Windows · Sysmon · Splunk · Universal Forwarder",
-        "05  CTF & Security Research — controlled practice across web, crypto, forensics, steganography, reversing and networking"
+      "cat about.txt": [
+        "Ravi is a Computer Engineering student at Cosmos College under Pokhara University in Nepal.",
+        "He is learning cybersecurity through Linux, networking, security tools, CTF challenges, labs, projects, research and documentation.",
+        "Current direction: security operations, penetration testing and cloud security."
       ],
 
-      "cat about.txt":[
-        "Ravi is a Computer Engineering student at Cosmos College under Pokhara University, learning cybersecurity through Linux, networking, security tools, CTF challenges, labs, projects, research, and documentation. His direction is toward security operations, penetration testing, and cloud security."
-      ],
-
-      "cat lab.txt":[
+      "cat lab.txt": [
         "lab_mode: controlled learning environment",
         "stack: Kali / Parrot OS → security tools → target machines → logs / telemetry → Splunk / analysis",
         "practice: virtual machines · Metasploitable · Linux · Sysmon · network analysis",
         "principle: observe → test → document"
       ],
 
-      "cat research.txt":[
-        "AI and cybersecurity · future cyber threats · AI-assisted cybersecurity · threat detection · security automation · cloud security · OSINT · defensive security · human-AI collaboration",
-        "ongoing research fellowship/project work; no invented publications"
+      "cat research.txt": [
+        "topics: AI and cybersecurity, future cyber threats, AI-assisted cybersecurity,",
+        "threat detection, security automation, cloud security, OSINT, defensive security,",
+        "human-AI collaboration",
+        "status: ongoing research fellowship/project work"
       ],
 
-      "cat contact.txt":[
-        "email: raviydvg75@gmail.com",
-        "github: github.com/raviydvg75",
-        "linkedin: Ravi Yadav profile",
-        "youtube: CTF Guy 13"
-      ],
-
-      pwd:[
+      pwd: [
         "/home/ravi/ra0x/cyberlab"
       ],
 
-      date:[
+      date: [
         "portfolio session active · local interface time not collected"
       ],
 
-      help:[
-        "whoami  ls  skills  projects  cat about.txt  cat lab.txt  cat research.txt  cat contact.txt  pwd  date  clear  help"
+      help: [
+        "whoami  ls  skills  projects",
+        "cat about.txt  cat lab.txt  cat research.txt  cat contact.txt",
+        "pwd  date  clear  help"
       ]
 
     };
 
-
-    function addTerminalLine(
+    function addLine(
       text,
-      kind="output-line",
-      links=false
-    ){
+      className = ""
+    ) {
+      const line =
+        document.createElement("div");
 
-      const line=document.createElement("div");
+      line.className =
+        `terminal-line ${className}`;
 
-      line.className=
-        "terminal-line "+kind;
+      line.textContent = text;
 
-      if(
-        links &&
-        text.startsWith("github:")
-      ){
-
-        line.append("github: ");
-
-        const a=document.createElement("a");
-
-        a.href=
-          "https://github.com/raviydvg75";
-
-        a.target="_blank";
-
-        a.rel="noopener noreferrer";
-
-        a.textContent=
-          "github.com/raviydvg75";
-
-        line.append(a);
-
-      }
-
-      else if(
-        links &&
-        text.startsWith("linkedin:")
-      ){
-
-        line.append("linkedin: ");
-
-        const a=document.createElement("a");
-
-        a.href=
-          "https://www.linkedin.com/in/ravi-yadav-%F0%9F%87%B3%F0%9F%87%B5-a69475412?utm_source=share_via&utm_content=profile&utm_medium=member_android";
-
-        a.target="_blank";
-
-        a.rel="noopener noreferrer";
-
-        a.textContent=
-          "Ravi Yadav profile";
-
-        line.append(a);
-
-      }
-
-      else if(
-        links &&
-        text.startsWith("youtube:")
-      ){
-
-        line.append("youtube: ");
-
-        const a=document.createElement("a");
-
-        a.href=
-          "https://youtube.com/@ctfguy13?si=rzzHuCV60BG3MD3B";
-
-        a.target="_blank";
-
-        a.rel="noopener noreferrer";
-
-        a.textContent=
-          "CTF Guy 13";
-
-        line.append(a);
-
-      }
-
-      else{
-
-        line.textContent=text;
-
-      }
-
-      terminalOutput.append(line);
-
-      terminalOutput.scrollTop=
-        terminalOutput.scrollHeight;
+      output.appendChild(line);
     }
 
+    function addContactOutput() {
 
-    function clearTerminal(){
+      const contacts = [
+        {
+          label: "email: ",
+          url: "mailto:raviydvg75@gmail.com",
+          text: "raviydvg75@gmail.com"
+        },
 
-      terminalOutput.replaceChildren();
+        {
+          label: "github: ",
+          url: "https://github.com/raviydvg75",
+          text: "github.com/raviydvg75"
+        },
 
-      addTerminalLine(
-        "visitor@ra0x-lab:~$ ready — type help to explore",
-        "output-line"
+        {
+          label: "linkedin: ",
+          url: "https://www.linkedin.com/in/ravi-yadav-%F0%9F%87%B3%F0%9F%87%B5-a69475412",
+          text: "linkedin.com/in/ravi-yadav"
+        },
+
+        {
+          label: "youtube: ",
+          url: "https://youtube.com/@ctfguy13",
+          text: "youtube.com/@ctfguy13"
+        }
+      ];
+
+      contacts.forEach(
+        ({ label, url, text }) => {
+
+          const line =
+            document.createElement("div");
+
+          line.className =
+            "terminal-line";
+
+          const prefix =
+            document.createTextNode(label);
+
+          const link =
+            document.createElement("a");
+
+          link.href = url;
+
+          link.textContent = text;
+
+          link.target = "_blank";
+
+          link.rel =
+            "noopener noreferrer";
+
+          link.style.color =
+            "var(--cyan)";
+
+          line.append(
+            prefix,
+            link
+          );
+
+          output.appendChild(line);
+        }
       );
-
     }
 
+    function runCommand(rawCommand) {
 
-    function runTerminal(raw){
+      const command =
+        rawCommand.trim().toLowerCase();
 
-      const command=
-        raw.trim().toLowerCase();
+      if (!command) {
+        return;
+      }
 
-      if(!command)return;
+      commandHistory.push(rawCommand);
 
-      addTerminalLine(
-        "visitor@ra0x-lab:~$ "+raw,
-        "prompt-line"
+      historyIndex =
+        commandHistory.length;
+
+      addLine(
+        `visitor@ra0x-lab:~$ ${rawCommand}`,
+        "command"
       );
 
-      if(command==="clear"){
+      if (command === "clear") {
 
-        clearTerminal();
+        output.innerHTML = "";
 
-        terminalInput.focus();
+        addLine(
+          "terminal cleared",
+          "system"
+        );
 
         return;
       }
 
-      const result=
-        terminalCommands[command];
+      if (command === "projects") {
 
-      if(result){
-
-        result.forEach(
-          line=>
-            addTerminalLine(
-              line,
-              "output-line",
-              command==="cat contact.txt"
-            )
+        projectsOutput.forEach(
+          line => addLine(line)
         );
 
+        return;
       }
 
-      else{
+      if (command === "cat contact.txt") {
 
-        addTerminalLine(
-          "command not found: "+
-          raw+
-          ". Try help to see available portfolio commands."
+        addContactOutput();
+
+        return;
+      }
+
+      if (responses[command]) {
+
+        responses[command].forEach(
+          line => addLine(line)
         );
 
+        return;
       }
 
-      terminalInput.focus();
+      addLine(
+        `command not found: ${rawCommand}. Try help to see available portfolio commands.`,
+        "error"
+      );
     }
 
+    function startTerminal() {
 
-    clearTerminal();
+      output.innerHTML = "";
 
+      addLine(
+        "ra0x portfolio terminal ready.",
+        "system"
+      );
+
+      addLine(
+        "Type help to see available commands.",
+        "system"
+      );
+    }
 
     terminalForm.addEventListener(
       "submit",
-      event=>{
+      event => {
 
         event.preventDefault();
 
-        const value=
-          terminalInput.value;
+        runCommand(
+          terminalInput.value
+        );
 
-        if(value.trim()){
+        terminalInput.value = "";
 
-          terminalHistory.push(value);
-
-          historyIndex=
-            terminalHistory.length;
-
-          runTerminal(value);
-
-          terminalInput.value="";
-        }
-
+        output.scrollTop =
+          output.scrollHeight;
       }
     );
-
 
     terminalInput.addEventListener(
       "keydown",
-      event=>{
+      event => {
 
-        if(
-          (event.ctrlKey||event.metaKey) &&
-          event.key.toLowerCase()==="l"
-        ){
-
-          event.preventDefault();
-
-          clearTerminal();
-
-        }
-
-        else if(event.key==="ArrowUp"){
+        if (
+          (event.ctrlKey ||
+            event.metaKey) &&
+          event.key.toLowerCase() === "l"
+        ) {
 
           event.preventDefault();
 
-          if(historyIndex>0){
-
-            terminalInput.value=
-              terminalHistory[--historyIndex]||"";
-
-          }
-
-        }
-
-        else if(event.key==="ArrowDown"){
-
-          event.preventDefault();
-
-          if(historyIndex<terminalHistory.length){
-
-            terminalInput.value=
-              terminalHistory[++historyIndex]||"";
-
-          }
-
-        }
-
-      }
-    );
-
-
-    document
-      .querySelectorAll("[data-terminal-command]")
-      .forEach(
-        button=>{
-          button.addEventListener(
-            "click",
-            ()=>{
-              runTerminal(
-                button.dataset.terminalCommand
-              );
-            }
-          );
-        }
-      );
-
-
-    terminalClear.addEventListener(
-      "click",
-      clearTerminal
-    );
-
-
-    document
-      .querySelector('a[href="#projects"]')
-      .addEventListener(
-        "click",
-        ()=>{
-          if(
-            !terminalOutput.textContent.includes(
-              "viewing: /projects"
-            )
-          ){
-
-            addTerminalLine(
-              "viewing: /projects"
-            );
-
-          }
-        }
-      );
-
-
-    /* CONTACT FORM */
-
-    const form=
-      document.getElementById("contact-form");
-
-    const status=
-      document.getElementById("form-status");
-
-
-    form.addEventListener(
-      "submit",
-      event=>{
-
-        event.preventDefault();
-
-        const name=
-          form.name.value.trim();
-
-        const email=
-          form.email.value.trim();
-
-        const message=
-          form.message.value.trim();
-
-        const validEmail=
-          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-
-        [
-          ["name",!!name],
-          ["email",validEmail],
-          ["message",!!message]
-        ].forEach(
-          ([id,ok])=>{
-            document.getElementById(
-              id+"-error"
-            ).style.display=
-              ok
-                ? "none"
-                : "block";
-          }
-        );
-
-
-        if(
-          !name ||
-          !validEmail ||
-          !message
-        ){
+          output.innerHTML = "";
 
           return;
         }
 
+        if (event.key === "ArrowUp") {
 
-        const subject=
-          encodeURIComponent(
-            `Portfolio message from ${name}`
-          );
+          event.preventDefault();
 
+          if (historyIndex > 0) {
 
-        const body=
-          encodeURIComponent(
-            `Name: ${name}\nEmail: ${email}\n\n${message}`
-          );
+            historyIndex--;
 
+            terminalInput.value =
+              commandHistory[
+                historyIndex
+              ];
+          }
+        }
 
-        status.style.color=
-          "var(--green)";
+        if (event.key === "ArrowDown") {
 
+          event.preventDefault();
 
-        status.innerHTML=
-          'Opening your email app… '+
-          '<a class="btn orange" '+
-          'style="margin-top:10px" '+
-          'href="mailto:raviydvg75@gmail.com?subject='+
-          subject+
-          '&body='+
-          body+
-          '">Open email draft</a>';
+          if (
+            historyIndex <
+            commandHistory.length - 1
+          ) {
 
+            historyIndex++;
 
-        window.location.href=
-          `mailto:raviydvg75@gmail.com?subject=${subject}&body=${body}`;
+            terminalInput.value =
+              commandHistory[
+                historyIndex
+              ];
 
+          } else {
+
+            historyIndex =
+              commandHistory.length;
+
+            terminalInput.value = "";
+          }
+        }
       }
     );
 
+    document
+      .querySelectorAll("[data-command]")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            runCommand(
+              button.dataset.command
+            );
+
+            terminalInput.focus();
+
+            output.scrollTop =
+              output.scrollHeight;
+          }
+        );
+      });
+
+    clearTerminal.addEventListener(
+      "click",
+      () => {
+
+        output.innerHTML = "";
+
+        addLine(
+          "terminal cleared",
+          "system"
+        );
+
+        terminalInput.focus();
+      }
+    );
+
+    startTerminal();
+
+    /* =========================
+       MOBILE MENU
+    ========================== */
+
+    const menuButton =
+      document.getElementById(
+        "menuButton"
+      );
+
+    const navLinks =
+      document.getElementById(
+        "navLinks"
+      );
+
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          navLinks.classList.toggle(
+            "open"
+          );
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuButton.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      }
+    );
+
+    document
+      .querySelectorAll(".nav-link")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove(
+              "open"
+            );
+
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuButton.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          }
+        );
+      });
+
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================== */
+
+    const sections =
+      document.querySelectorAll(
+        "main section[id]"
+      );
+
+    const navItems =
+      document.querySelectorAll(
+        ".nav-link"
+      );
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                !entry.isIntersecting
+              ) {
+                return;
+              }
+
+              navItems.forEach(
+                link => {
+
+                  const isActive =
+                    link.getAttribute(
+                      "href"
+                    ) ===
+                    `#${entry.target.id}`;
+
+                  link.classList.toggle(
+                    "active",
+                    isActive
+                  );
+
+                  if (isActive) {
+
+                    link.setAttribute(
+                      "aria-current",
+                      "page"
+                    );
+
+                  } else {
+
+                    link.removeAttribute(
+                      "aria-current"
+                    );
+                  }
+                }
+              );
+            }
+          );
+        },
+        {
+          rootMargin:
+            "-35% 0px -55% 0px"
+        }
+      );
+
+    sections.forEach(
+      section =>
+        observer.observe(section)
+    );
+
+    /* =========================
+       CONTACT FORM
+    ========================== */
+
+    const contactForm =
+      document.getElementById(
+        "contactForm"
+      );
+
+    const formStatus =
+      document.getElementById(
+        "formStatus"
+      );
+
+    const nameInput =
+      document.getElementById("name");
+
+    const emailInput =
+      document.getElementById("email");
+
+    const messageInput =
+      document.getElementById("message");
+
+    const nameError =
+      document.getElementById(
+        "nameError"
+      );
+
+    const emailError =
+      document.getElementById(
+        "emailError"
+      );
+
+    const messageError =
+      document.getElementById(
+        "messageError"
+      );
+
+    function clearErrors() {
+
+      [
+        nameInput,
+        emailInput,
+        messageInput
+      ].forEach(input => {
+
+        input.setAttribute(
+          "aria-invalid",
+          "false"
+        );
+      });
+
+      nameError.textContent = "";
+      emailError.textContent = "";
+      messageError.textContent = "";
+
+      formStatus.textContent = "";
+      formStatus.className =
+        "form-status";
+    }
+
+    contactForm.addEventListener(
+      "submit",
+      event => {
+
+        event.preventDefault();
+
+        clearErrors();
+
+        const name =
+          nameInput.value.trim();
+
+        const email =
+          emailInput.value.trim();
+
+        const message =
+          messageInput.value.trim();
+
+        let hasError = false;
+
+        if (!name) {
+
+          nameInput.setAttribute(
+            "aria-invalid",
+            "true"
+          );
+
+          nameError.textContent =
+            "Please enter your name.";
+
+          hasError = true;
+        }
+
+        if (!email) {
+
+          emailInput.setAttribute(
+            "aria-invalid",
+            "true"
+          );
+
+          emailError.textContent =
+            "Please enter your email.";
+
+          hasError = true;
+
+        } else if (
+          !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+            email
+          )
+        ) {
+
+          emailInput.setAttribute(
+            "aria-invalid",
+            "true"
+          );
+
+          emailError.textContent =
+            "Please enter a valid email address.";
+
+          hasError = true;
+        }
+
+        if (!message) {
+
+          messageInput.setAttribute(
+            "aria-invalid",
+            "true"
+          );
+
+          messageError.textContent =
+            "Please enter a message.";
+
+          hasError = true;
+        }
+
+        if (hasError) {
+
+          formStatus.textContent =
+            "Please correct the highlighted fields.";
+
+          formStatus.className =
+            "form-status error";
+
+          return;
+        }
+
+        formStatus.textContent =
+          "Message validated successfully. This demo form does not send email yet; please use the email link above.";
+
+        formStatus.className =
+          "form-status";
+
+        contactForm.reset();
+
+        [
+          nameInput,
+          emailInput,
+          messageInput
+        ].forEach(input => {
+
+          input.setAttribute(
+            "aria-invalid",
+            "false"
+          );
+        });
+      }
+    );
   </script>
 
 </body>
 </html>
+```
